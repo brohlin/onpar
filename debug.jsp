@@ -1,0 +1,14 @@
+Target: <%= mTarget %>
+Acceder: <%= mAcceder %>
+Registrar: <%= mRegistrar %>
+Salir: <%= mSalir %>
+Inicio: <%= mInicio %>
+Cuenta: <%= mCuenta %>
+Solicitudes: <%= mSolicitudes %>
+Usuarios: <%= mUsuarios %>
+Reportes: <%= mReportes %>
+Session Email:  <%= session.getAttribute("email") %>
+Form Email: <%= request.getParameter("email")  %> 
+Form Pwd:  <%= request.getParameter("pwd")  %>
+User Role ID:  <%= session.getAttribute("role_id")  %>
+User Status CD:  <%= session.getAttribute("user_status_cd")  %>

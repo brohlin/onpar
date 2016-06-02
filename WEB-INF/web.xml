@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<context-param>
+	    <description>Location to store uploaded file</description> 
+	    <param-name>file-upload</param-name> 
+	    <!-- param-value>/home/brohlin/jvm/apache-tomcat-7.0.33/domains/ruandunduma120.org/data/</param-value -->
+	    <param-value>/opt/tomcat/webapps/data/</param-value> 
+	    <!-- param-value>C:/apache-tomcat-7.0.63/webapps/data/</param-value -->
+	</context-param>
+	
+	<!-- context-param> 
+	    <description>File size max</description> 
+	    <param-name>filesize-max</param-name> 
+	    <param-value>1024000</param-value> 
+	</context-param -->	
+
+  <description>MySQL ONPAR App</description>
+  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/OnparDB</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
+
+  <servlet>
+	<servlet-name>HSSFCreate</servlet-name>
+    <servlet-class>org.onpar.utils.HSSFCreate</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>   
+  
+  <servlet-mapping>
+    <servlet-name>HSSFCreate</servlet-name>
+    <url-pattern>/HSSFCreate</url-pattern>
+  </servlet-mapping>  
+  
+    <servlet>
+    <servlet-name>Carpeta</servlet-name>
+    <servlet-class>Carpeta</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+    <servlet>
+    <servlet-name>DeclaracionJurada_v2</servlet-name>
+    <servlet-class>DeclaracionJurada_v2</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+    <servlet>
+    <servlet-name>EntrevistaSocial</servlet-name>
+    <servlet-class>EntrevistaSocial</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+      <servlet>
+    <servlet-name>EntrevistaSocial_v2</servlet-name>
+    <servlet-class>EntrevistaSocial_v2</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+    <servlet>
+    <servlet-name>EntrevistaLegal</servlet-name>
+    <servlet-class>EntrevistaLegal</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+    <servlet>
+    <servlet-name>EntrevistaLegalLarga</servlet-name>
+    <servlet-class>EntrevistaLegalLarga</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>EntrevistaLegalMediana</servlet-name>
+    <servlet-class>EntrevistaLegalMediana</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>EntrevistaLegalCorta</servlet-name>
+    <servlet-class>EntrevistaLegalCorta</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+    <servlet>
+    <servlet-name>ViewPDF</servlet-name>
+    <servlet-class>ViewPDF</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>  
+ 
+    <servlet>
+    <servlet-name>ViewPDF_v2</servlet-name>
+    <servlet-class>ViewPDF_v2</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>  
+    <servlet>
+    <servlet-name>Report</servlet-name>
+    <servlet-class>Report</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>   
+
+  <servlet>
+    <servlet-name>Registro</servlet-name>
+    <servlet-class>Registro</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>   
+
+  
+  <!-- The mapping for the servlet -->
+
+  <servlet-mapping>
+    <servlet-name>Registro</servlet-name>
+    <url-pattern>/Registro</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Carpeta</servlet-name>
+    <url-pattern>/Carpeta</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeclaracionJurada_v2</servlet-name>
+    <url-pattern>/DeclaracionJurada_v2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EntrevistaSocial</servlet-name>
+    <url-pattern>/EntrevistaSocial</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>EntrevistaSocial_v2</servlet-name>
+    <url-pattern>/EntrevistaSocial_v2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EntrevistaLegal</servlet-name>
+    <url-pattern>/EntrevistaLegal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EntrevistaLegalLarga</servlet-name>
+    <url-pattern>/EntrevistaLegalLarga</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>EntrevistaLegalMediana</servlet-name>
+    <url-pattern>/EntrevistaLegalMediana</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EntrevistaLegalCorta</servlet-name>
+    <url-pattern>/EntrevistaLegalCorta</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>ViewPDF</servlet-name>
+    <url-pattern>/ViewPDF</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>ViewPDF_v2</servlet-name>
+    <url-pattern>/ViewPDF_v2</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>Report</servlet-name>
+    <url-pattern>/Report</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Establish the default MIME type mappings -->
+  <mime-mapping>
+    <extension>pdf</extension>
+    <mime-type>application/pdf</mime-type>
+  </mime-mapping>
+
+  <!-- Establish the default list of welcome files -->
+  <welcome-file-list>
+    <welcome-file>main.jsp</welcome-file>
+  </welcome-file-list>
+
+<error-page>
+  <error-code>500</error-code>
+  <location>/default_error_page.jsp</location>
+</error-page>
+
+</web-app>
