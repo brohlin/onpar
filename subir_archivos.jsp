@@ -271,30 +271,5 @@
         </tr>  
         </form>
 
-
-         <form method="POST" action="sql_upd_solicitante_file_resolucion_v2.jsp" enctype="multipart/form-data" onsubmit="return checkFilesize('fileinput12')">
-        	<input type="hidden" name="id" value="<%= session.getAttribute("temp_solicitante_v2_id") %>">
-        	<input type="hidden" value="/temp/" name="destination"/>
-		<tr>               	
-<%
-		if (session.getAttribute("temp_solicitante_v2_resolucion") != null) {	
-%>
-        	<td width="200"><a href="/onpar/ViewPDF_v2?file=resolucion" target="_blank">Ver Resolución</a></td>
-        	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput12"></td>
-            <td width="100">Fecha de resolución: <input name="fecha_de_resolucion" value="<%= session.getAttribute("temp_solicitante_v2_fecha_de_resolucion") %>"  type="date" required="required"></td>
-            <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
-<%
-		} else {
-%>       
-        	<td width="200">Subir Resolución</td>
-        	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput12"></td>
-            <td width="100">Fecha de resolución: <input name="fecha_de_resolucion"  type="date" required="required"></td>
-            <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
-<%
-		}
-%> 
-        </tr>  
-        </form>
-
 </table>
 </details>

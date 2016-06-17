@@ -50,7 +50,12 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			sbFilename.append(System.currentTimeMillis());
 			sbFilename.append(".pdf");
 
-			resp.setHeader("Cache-Control", "max-age=30");			
+			// resp.setHeader("Cache-Control", "max-age=30");	
+			
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+			resp.setDateHeader("Expires", 0); // Proxies.
+			
 			resp.setContentType("application/pdf");
 			
 			StringBuffer sbContentDispValue = new StringBuffer();
@@ -152,7 +157,7 @@ public class EntrevistaSocial_v2 extends HttpServlet
 		Paragraph _p = new Paragraph("", fNormalBlack);
 		_p.add(new Phrase("ONPAR", fBold));;
 		_p.add(Chunk.NEWLINE);
-		_p.add(new Phrase("Oficina Nacional par la Atención Refugiados", fNormalBlack));
+		_p.add(new Phrase("Oficina Nacional Para la Atención Refugiados", fNormalBlack));
 		
 		// PdfPCell mLeftCell = new PdfPCell(new Paragraph("ONPAR", fBold));	
 		PdfPCell mLeftCell = new PdfPCell(_p);
@@ -510,10 +515,13 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			
 	{	
 	 	HttpSession session2 = req2.getSession(true);
-		String mQuery = "SELECT nombre, " +
-	    "   edad, " +
-	    "   parentesco_lkup, " +
-	    "   ocupacion " +
+		String mQuery = "SELECT ifnull(nombre,''), " +
+	    "   ifnull(fecha_de_nacimiento,''), " +
+	    "   ifnull(parentesco_lkup,''), " +
+	    "   ifnull(ocupacion,''), " +
+	    "   ifnull(sexo,''), " +
+	    "   ifnull(nacionalidad,''), " +
+	    "   ifnull(pais_lkup,'') " +
 	    " FROM familia " +
 	    " where solicitante_id=? " +
 		" and pais_lkup!='Panamá' ";			
@@ -556,14 +564,14 @@ public class EntrevistaSocial_v2 extends HttpServlet
 					rows++;
 				}
 				
-				int cells=rows*4;
+				int cells=rows*7;
 				
 				System.out.println("Rows = " + rows);
 				System.out.println("Cells = " + cells);
 				
 				try
 				{
-					tab = new PdfPTable(4 /* columns */);
+					tab = new PdfPTable(7 /* columns */);
 					
 				}
 				catch (Exception ex)
@@ -571,20 +579,20 @@ public class EntrevistaSocial_v2 extends HttpServlet
 					throw new RuntimeException(ex);
 				}
 				
-				// tab.setBorderWidth(1.0f);
-				tab.getDefaultCell().setBorder(1);
+				tab.setWidthPercentage(100);
+				tab.getDefaultCell().setBorder(0);
 				tab.getDefaultCell().setBorderWidth(1.0f);
 				tab.getDefaultCell().setPadding(2);
-				
-				
-				// tab.setPadding(2);
-				// tab.setSpacing(2);
+
 	
 				
-				tab.addCell(new PdfPCell(new Phrase("Nombre",fNormalBlack)));
-				tab.addCell(new PdfPCell(new Phrase("Edad",fNormalBlack)));
-				tab.addCell(new PdfPCell(new Phrase("Parentesco",fNormalBlack)));
-				tab.addCell(new PdfPCell(new Phrase("Ocupación",fNormalBlack)));											
+				tab.addCell(new Phrase("Nombre",fNormalBlack));
+				tab.addCell(new Phrase("Fecha de nacimiento",fNormalBlack));
+				tab.addCell(new Phrase("Parentesco",fNormalBlack));
+				tab.addCell(new Phrase("Ocupación",fNormalBlack));											
+				tab.addCell(new Phrase("Sexo",fNormalBlack));											
+				tab.addCell(new Phrase("Nacionalidad",fNormalBlack));											
+				tab.addCell(new Phrase("País",fNormalBlack));											
 				
 				rs.beforeFirst();
 				
@@ -594,7 +602,10 @@ public class EntrevistaSocial_v2 extends HttpServlet
 					tab.addCell(new Phrase(rs.getString(1), fNormal)); 
 					tab.addCell(new Phrase(rs.getString(2), fNormal)); 
 					tab.addCell(new Phrase(rs.getString(3), fNormal)); 
-					tab.addCell(new Phrase(rs.getString(4), fNormal)); 
+					tab.addCell(new Phrase(rs.getString(4), fNormal));
+					tab.addCell(new Phrase(rs.getString(5), fNormal));
+					tab.addCell(new Phrase(rs.getString(6), fNormal));
+					tab.addCell(new Phrase(rs.getString(7), fNormal));
 
 				}
 				
@@ -618,8 +629,8 @@ public class EntrevistaSocial_v2 extends HttpServlet
 		{	
 		 	HttpSession session2 = req2.getSession(true);
 			String mQuery = "select " +
-					        "pre_edu_nombre,pre_edu_lugar,pre_edu_desde,pre_edu_hasta, pre_edu_titulo, " +
-		 	                "pre_edu_nombre2,pre_edu_lugar2,pre_edu_desde2,pre_edu_hasta2, pre_edu_titulo2 " +
+					        "ifnull(pre_edu_nombre,''), ifnull(pre_edu_lugar,''), ifnull(pre_edu_desde,''), ifnull(pre_edu_hasta,''), ifnull(pre_edu_titulo,''), " +
+		 	                "ifnull(pre_edu_nombre2,''), ifnull(pre_edu_lugar2,''), ifnull(pre_edu_desde2,''), ifnull(pre_edu_hasta2,''), ifnull(pre_edu_titulo2,'') " +
 					        "from vw_solicitante where id=?";
 
 			PdfPTable tab = null;
@@ -637,15 +648,17 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			// tab.setPadding(2);
 			// tab.setSpacing(2);
 			
-			tab.getDefaultCell().setBorder(1);
+			
+			tab.setWidthPercentage(100);
+			tab.getDefaultCell().setBorder(0);
 			tab.getDefaultCell().setBorderWidth(1.0f);
 			tab.getDefaultCell().setPadding(2);
 	
-			tab.addCell(new PdfPCell(new Phrase("Nombre", fNormalBlack)));
-			tab.addCell(new PdfPCell(new Phrase("Lugar", fNormalBlack)));
-			tab.addCell(new PdfPCell(new Phrase("Desde", fNormalBlack)));
-			tab.addCell(new PdfPCell(new Phrase("Hasta", fNormalBlack)));
-			tab.addCell(new PdfPCell(new Phrase("Título", fNormalBlack)));
+			tab.addCell(new Phrase("Nombre", fNormalBlack));
+			tab.addCell(new Phrase("Lugar", fNormalBlack));
+			tab.addCell(new Phrase("Desde", fNormalBlack));
+			tab.addCell(new Phrase("Hasta", fNormalBlack));
+			tab.addCell(new Phrase("Título", fNormalBlack));
 		
 			
 			Connection con = null;
@@ -707,10 +720,13 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			
 		{	
 		 	HttpSession session2 = req2.getSession(true);
-			String mQuery = "SELECT nombre, " +
-		    "   edad, " +
-		    "   parentesco_lkup, " +
-		    "   ocupacion " +
+			String mQuery = "SELECT ifnull(nombre,''), " +
+				    "   ifnull(fecha_de_nacimiento,''), " +
+				    "   ifnull(parentesco_lkup,''), " +
+				    "   ifnull(ocupacion,''), " +
+				    "   ifnull(sexo,''), " +
+				    "   ifnull(nacionalidad,''), " +
+				    "   ifnull(pais_lkup,'') " +
 		    " FROM familia " +
 		    " where solicitante_id=? " +
 			" and pais_lkup='Panamá' ";			
@@ -753,14 +769,14 @@ public class EntrevistaSocial_v2 extends HttpServlet
 						rows++;
 					}
 					
-					int cells=rows*4;
+					int cells=rows*7;
 					
 					System.out.println("Rows = " + rows);
 					System.out.println("Cells = " + cells);
 					
 					try
 					{
-						tab = new PdfPTable(4 /* columns */);
+						tab = new PdfPTable(7 /* columns */);
 						
 					}
 					catch (Exception ex)
@@ -768,29 +784,32 @@ public class EntrevistaSocial_v2 extends HttpServlet
 						throw new RuntimeException(ex);
 					}
 					
-					tab.getDefaultCell().setBorder(1);
+					tab.setWidthPercentage(100);
+					tab.getDefaultCell().setBorder(0);
 					tab.getDefaultCell().setBorderWidth(1.0f);
 					tab.getDefaultCell().setPadding(2);
 			
-					tab.addCell(new PdfPCell(new Phrase("Nombre", fNormalBlack)));
-					tab.addCell(new PdfPCell(new Phrase("Edad", fNormalBlack)));
-					tab.addCell(new PdfPCell(new Phrase("Parentesco", fNormalBlack)));
-					tab.addCell(new PdfPCell(new Phrase("Ocupación", fNormalBlack)));											
+					tab.addCell(new Phrase("Nombre", fNormalBlack));
+					tab.addCell(new Phrase("Fecha de nacimiento", fNormalBlack));
+					tab.addCell(new Phrase("Parentesco", fNormalBlack));
+					tab.addCell(new Phrase("Ocupación", fNormalBlack));
+					tab.addCell(new Phrase("Sexo", fNormalBlack));	
+					tab.addCell(new Phrase("Nacionalidad", fNormalBlack));	
+					tab.addCell(new Phrase("País", fNormalBlack));	
 					
 					rs.beforeFirst();
 					
 					while(rs.next())
-					{
-						
+					{	
 						tab.addCell(new Phrase(rs.getString(1), fNormal)); 
 						tab.addCell(new Phrase(rs.getString(2), fNormal)); 
 						tab.addCell(new Phrase(rs.getString(3), fNormal)); 
-						tab.addCell(new Phrase(rs.getString(4), fNormal)); 
-
+						tab.addCell(new Phrase(rs.getString(4), fNormal));
+						tab.addCell(new Phrase(rs.getString(5), fNormal));
+						tab.addCell(new Phrase(rs.getString(6), fNormal));
+						tab.addCell(new Phrase(rs.getString(7), fNormal));
 					}
-					
-					
-					
+															
 					return tab;
 			}
 			catch(Exception e){

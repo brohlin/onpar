@@ -39,7 +39,7 @@
 	Solicitante: 
 	<%= session.getAttribute("temp_solicitante_v2_id").toString() %>&nbsp;-&nbsp;<%= session.getAttribute("temp_solicitante_v2_pre_primer_nombre") %>&nbsp;<%= session.getAttribute("temp_solicitante_v2_pre_apellido_paterno") %>&nbsp;<%= session.getAttribute("temp_solicitante_v2_pre_apellido_materno") %>
 	</td>
-	<td><a href="/onpar/Registro" target="_blank">Imprimir el registro</a></td>
+	<td><a href="/onpar/Registro?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir el registro</a></td>
 </tr>
 
 <%
@@ -202,6 +202,12 @@
 <fieldset>
 <jsp:include page="pruebas_v2.jsp" flush="true" />
 </fieldset>
+<br>
+<br>
+<fieldset>
+<jsp:include page="resoluciones_v2.jsp" flush="true" />
+</fieldset>
+
 <%
 	if (session.getAttribute("role_id").equals("4")) {
 %>
@@ -265,6 +271,10 @@
 <br>
 </details>
 </fieldset>
+<br>
+<br>
+<br>
+<br>
 <%
 	}
 %>

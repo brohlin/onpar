@@ -56,6 +56,8 @@ public class ViewPDF extends HttpServlet
 				blob = (Blob) session.getAttribute("temp_solicitante_pre_copia_identificacion5"); 				
 			} else if (mFile.equals("prueba")) {
 				blob = (Blob) session.getAttribute("temp_prueba_file"); 				
+			} else if (mFile.equals("resolucion")) {
+				blob = (Blob) session.getAttribute("temp_resolucion_file"); 				
 			} else if (mFile.equals("renuncia")) {
 				blob = (Blob) session.getAttribute("temp_solicitante_renuncia"); 				
 			} else if (mFile.equals("ref_peticion_para_la_recon")) {

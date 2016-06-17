@@ -31,7 +31,7 @@ session.setAttribute("temp_last_mod_tmstmp",null);
 session.setAttribute("temp_familia_id",null);
 session.setAttribute("temp_familia_solicitante_id",null);
 session.setAttribute("temp_familia_nombre", null);
-session.setAttribute("temp_familia_edad", null);				
+session.setAttribute("temp_familia_fecha_de_nacimiento", null);				
 session.setAttribute("temp_familia_parentesco_lkup", null);
 session.setAttribute("temp_familia_ubicacion", null);
 session.setAttribute("temp_familia_pais_lkup", null);

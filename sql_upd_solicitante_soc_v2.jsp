@@ -40,13 +40,29 @@
 					"motivo_porque = ? , " +
 					"otra_informacion = ? , " +
 					"otra_pregunta = ? , " +
+					"last_mod_tmstmp = now(), " + 
 					"recomendaciones = ? " +					
 					  "where id = ?";
 
-
+	String mQuery2 = "update declaracion_jurada " +
+					" set pre_edu_nombre = ? , " +
+					" pre_edu_lugar  = ? , " +
+					" pre_edu_desde  = ? , " +
+					" pre_edu_hasta  = ? , " +
+					" pre_edu_titulo = ? , " +	    
+					" pre_edu_nombre2 = ? , " +
+					" pre_edu_lugar2 = ? , " +
+					" pre_edu_desde2 = ? , " +
+					" pre_edu_hasta2 = ? , " +
+					" pre_edu_titulo2 = ? , " +
+					" last_mod_tmstmp = now(), " +
+					" last_user_id = ? " +
+					" where id = ? ";
+	
 	
 	Connection con = null;
 	PreparedStatement prest = null;
+	PreparedStatement prest2 = null;
 	
 
 	DataSource OnparDB;
@@ -104,6 +120,21 @@
 			
 			int mCount = prest.executeUpdate();
 			
+			prest2=con.prepareStatement(mQuery2);
+			prest2.setString(1,request.getParameter("pre_edu_nombre"));
+			prest2.setString(2,request.getParameter("pre_edu_lugar"));
+			prest2.setString(3,request.getParameter("pre_edu_desde"));
+			prest2.setString(4,request.getParameter("pre_edu_hasta"));
+			prest2.setString(5,request.getParameter("pre_edu_titulo"));
+			prest2.setString(6,request.getParameter("pre_edu_nombre2"));
+			prest2.setString(7,request.getParameter("pre_edu_lugar2"));
+			prest2.setString(8,request.getParameter("pre_edu_desde2"));
+			prest2.setString(9,request.getParameter("pre_edu_hasta2"));
+			prest2.setString(10,request.getParameter("pre_edu_titulo2"));
+			prest2.setString(11,session.getAttribute("id").toString());
+			prest2.setString(12,request.getParameter("id").toString());
+			
+			int mCount2 = prest2.executeUpdate();
 			
 			response.sendRedirect("/onpar/main.jsp?target=solicitantes");			
 		} 
@@ -112,6 +143,7 @@
 		throw e;
 	} finally {
 		if(prest != null) { prest.close(); }
+		if(prest2 != null) { prest2.close(); }
 		if(con != null) { con.close(); }
 	}
 %>

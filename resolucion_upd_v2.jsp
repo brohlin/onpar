@@ -41,7 +41,7 @@
 </tr>
 
 <tr>       
-	<td><a href="/onpar/ViewPDF?file=resolución" target="_blank"><%= session.getAttribute("temp_resolucion_dsc").toString() %></a></td>
+	<td><a href="/onpar/ViewPDF?file=resolucion" target="_blank"><%= session.getAttribute("temp_resolucion_dsc").toString() %></a></td>
 	<td>Fecha: <%= session.getAttribute("temp_resolucion_fecha").toString() %></a></td>
 	<td align="right"><input  type="submit" class="butnTxt" value="Eliminar" name="delete">
 </tr>         

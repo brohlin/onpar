@@ -74,7 +74,7 @@ Por favor, introduzca la fecha de la entrevista legal para indicar que se tuvo l
 <br>
 <br>
 <tr>
-	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalLarga" target="_blank">Imprimir la entrevista legal para la firma</a></td>
+	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalLarga?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir la entrevista legal para la firma</a></td>
 </tr>
 
 <br>
@@ -136,7 +136,7 @@ Por favor, introduzca la fecha de la entrevista legal para indicar que se tuvo l
 <br>
 <br>
 <tr>
-	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalMediana" target="_blank">Imprimir la entrevista legal para la firma</a></td>
+	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalMediana?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir la entrevista legal para la firma</a></td>
 </tr>
 
 <br>
@@ -179,7 +179,7 @@ Por favor, introduzca la fecha de la entrevista legal para indicar que se tuvo l
 <br>
 <br>
 <tr>
-	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalCorta" target="_blank">Imprimir la entrevista legal para la firma</a></td>
+	<td align="left" valign="bottom" colspan="2" nowrap><span class="subHdrBlackTxt"><strong>Preguntas/Repuestas</strong></span> - <a href="/onpar/EntrevistaLegalCorta?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir la entrevista legal para la firma</a></td>
 </tr>
 
 <br>

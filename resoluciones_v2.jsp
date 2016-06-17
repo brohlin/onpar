@@ -8,7 +8,7 @@
 		</td>
 	</tr>
 
-	<form name="add_resolucion_v2" action="main.jsp?target=resolution_v2" method="post">
+	<form name="add_resolucion_v2" action="main.jsp?target=resolucion_v2" method="post">
 
 	<tr>
 		<td align="right">

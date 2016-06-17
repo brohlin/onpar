@@ -23,7 +23,7 @@
 	<input type="hidden" name="id" value="<%= session.getAttribute("temp_solicitante_v2_id") %>">
 	
 	<details>
-		<summary>Entrevista Social - <a href="/onpar/EntrevistaSocial_v2?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir la entrevista social para la firma</a><br><br>
+		<summary>Entrevista Social - <a href="/onpar/EntrevistaSocial_v2" target="_blank">Imprimir la entrevista social para la firma</a><br><br>
 
 			Por favor, introduzca la fecha de la entrevista social para indicar que se tuvo lugar: <input type="date" id="fecha_entrevista_social" name="fecha_entrevista_social" value="<%= session.getAttribute("temp_solicitante_v2_fecha_entrevista_social") %>" required="required">
 			<input  type="submit" class="butnTxt" value="Guardar" name="save2">
@@ -49,29 +49,33 @@
 			<tr><td colspan="2">Fecha de llegada a ONPAR:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %></td></tr>	
 			<tr><td colspan="2">Ocupación en su país de origen:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_ocu_puesto") %></td></tr>		
 			<tr><td colspan="4">NIVEL DE ESTUDIO: </td></tr>
-
-	<tr class="datatablerowv2">
-		<td>Nombre de la institución</td>
-	    <td>Ciudad/País</td>
-		<td>Desde</td>
-	    <td>Hasta</td>
-	    <td>Titulo obtenido</td>
-	</tr>
-	<tr class="datatablerowaltv2">
-		<td><input type="text"  name="pre_edu_nombre" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre") %>" size="25" maxlength="40"></td>
-	    <td><input type="text"  name="pre_edu_lugar" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar") %>" size="25" maxlength="40"></td>
-	    <td><input type="date"  name="pre_edu_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde") %>"></td>
-	    <td><input type="date"  name="pre_edu_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta") %>"></td>
-	    <td><input type="text"  name="pre_edu_titulo" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo") %>" size="25" maxlength="40"></td>	    
-	</tr>
-	<tr class="datatablerowaltv2">
-		<td><input type="text"  name="pre_edu_nombre2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre2") %>" size="25" maxlength="40"></td>
-	    <td><input type="text"  name="pre_edu_lugar2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar2") %>" size="25" maxlength="40"></td>
-	    <td><input type="date"  name="pre_edu_desde2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde2") %>"></td>
-	    <td><input type="date"  name="pre_edu_hasta2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta2") %>"></td>
-	    <td><input type="text"  name="pre_edu_titulo2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo2") %>" size="25" maxlength="40"></td>	    
-	</tr>			
-
+			<tr>
+				<td colspan="4">
+					<table border="0">
+						<tr class="datatablerowaltv2">
+							<td><strong>Nombre</strong></td>
+				    		<td><strong>Ciudad/País</strong></td>
+							<td><strong>Desde</strong></td>
+				    		<td><strong>Hasta</strong></td>
+				    		<td><strong>Titulo</strong></td>
+						</tr>
+						<tr>
+							<td><%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_desde") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo") %></td>	    
+						</tr>
+						<tr class="datatablerowaltv2">
+							<td><%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre2") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar2") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_desde2") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta2") %></td>
+						    <td><%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo2") %></td>	    
+						</tr>		
+					</table>
+				</td>
+			</tr>
 
 			<!-- end of declaracion_jurada fields -->
 			<tr><td align="left" valign="bottom" colspan="4" class="subHdrBlackTxt" nowrap><strong>Datos de la Entrevista Social</strong></td></tr>
@@ -87,13 +91,11 @@
 				<td colspan="4">
 					<table border="0">
 						<tr class="<%= altrow %>">
-							<th><strong>Nombre</strong></td>
-							<th><strong>Parentesco</strong></td>
-							<th><strong>Fecha de nacimiento</strong></th>
-							<th><strong>Sexo</strong></th>
-							<th><strong>Nacionalidad</strong></th>
-			    			<th><strong>Ocupación</strong></td>
-			    			<th><strong>País</strong></td>
+							<td><strong>Nombre</strong></td>
+							<td><strong>Parentesco</strong></td>
+							<td><strong>Edad</strong></th>
+			    			<td><strong>Ocupación</strong></td>
+			    			<td><strong>País</strong></td>
 						</tr>
 <%		
 	while(size<db.getRowCount())
@@ -109,8 +111,6 @@
 							<td><%= db.getRow(size).get(3) %></td>
 							<td><%= db.getRow(size).get(2) %></td>
 							<td><%= db.getRow(size).get(4) %></td>
-							<td><%= db.getRow(size).get(7) %></td>
-							<td><%= db.getRow(size).get(8) %></td>
 				    		<td><%= db.getRow(size).get(5) %></td>
 				    		<td><%= db.getRow(size).get(6) %></td>
 						</tr>
@@ -130,13 +130,11 @@
 				<td colspan="4">
 					<table border="0">
 						<tr class="<%= altrow %>">
-							<th><strong>Nombre</strong></td>
-							<th><strong>Parentesco</strong></td>
-							<th><strong>Fecha de nacimiento</strong></th>
-							<th><strong>Sexo</strong></th>
-							<th><strong>Nacionalidad</strong></th>
-			    			<th><strong>Ocupación</strong></td>
-			    			<th><strong>País</strong></td>
+							<td><strong>Nombre</strong></td>
+							<td><strong>Parentesco</strong></td>
+							<td><strong>Edad</strong></th>
+			    			<td><strong>Ocupación</strong></td>
+			    			<td><strong>País</strong></td>
 						</tr>
 <%		
 	size=0;
@@ -155,8 +153,6 @@
 							<td><%= db2.getRow(size).get(3) %></td>
 							<td><%= db2.getRow(size).get(2) %></td>
 							<td><%= db2.getRow(size).get(4) %></td>
-							<td><%= db2.getRow(size).get(7) %></td>
-							<td><%= db2.getRow(size).get(8) %></td>
 				    		<td><%= db2.getRow(size).get(5) %></td>
 				    		<td><%= db2.getRow(size).get(6) %></td>
 						</tr>

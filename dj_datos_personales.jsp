@@ -100,12 +100,12 @@
 
 
 	<tr class="datatablerowv2">
-		<td colspan="2">Dirección actual</td>
-	    <td colspan="2">Número de teléfono</td>
+		<td colspan="2" class="boldRedTxt">Dirección actual</td>
+	    <td colspan="2" class="boldRedTxt">Número de teléfono</td>
 	</tr>
 	<tr class="datatablerowaltv2">
-		<td colspan="2"><input type="text"  name="pre_direccion_actual" value="<%= session.getAttribute("temp_solicitante_v2_pre_direccion_actual") %>" size="40" maxlength="40"></td>
-	    <td colspan="2"><input type="text"  name="pre_telefono1" value="<%= session.getAttribute("temp_solicitante_v2_pre_telefono1") %>" size="20" maxlength="20"></td>
+		<td colspan="2"><input type="text"  name="pre_direccion_actual" value="<%= session.getAttribute("temp_solicitante_v2_pre_direccion_actual") %>" size="40" maxlength="40" required></td>
+	    <td colspan="2"><input type="text"  name="pre_telefono1" value="<%= session.getAttribute("temp_solicitante_v2_pre_telefono1") %>" size="20" maxlength="20" required></td>
 	</tr>
 	<tr class="datatablerowv2">
 		<td colspan="2">País de pasaporte y número de pasaporte</td>

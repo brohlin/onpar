@@ -40,7 +40,9 @@
 				&& !mTarget.equals("prueba_upd_v2") 
 				&& !mTarget.equals("prueba_v2")
 				&& !mTarget.equals("prueba")
-				&& !mTarget.equals("prueba_upd")) {
+				&& !mTarget.equals("prueba_upd")
+				&& !mTarget.equals("resolucion_upd_v2") 
+				&& !mTarget.equals("resolucion_v2")) {
 %>			
 				<jsp:include page="reset_solicitante.jsp" />
 <%

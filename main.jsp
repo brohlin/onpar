@@ -176,7 +176,8 @@
 							<%															
 								    } else if (mTarget.equals("resolucion_v2")) {
 							%>
-										<jsp:include page="/resolucion_v2.jsp" />																												
+										<jsp:include page="/resolucion_v2.jsp" />	
+																																					
 							<%															
 								    } else if (mTarget.equals("resolucion_upd_v2")) {
 							%>

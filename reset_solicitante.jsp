@@ -193,6 +193,7 @@ session.setAttribute("temp_solicitante_v2_q30", null);
 session.setAttribute("temp_solicitante_v2_q31", null);
 session.setAttribute("temp_solicitante_v2_social_otra_pregunta", null);
 session.setAttribute("temp_solicitante_v2_legal_otra_pregunta", null);
+session.setAttribute("temp_solicitante_v2_pre_edad", null);
 
 
 %>

@@ -1,5 +1,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.sql.DataSource;
+
 import java.util.Locale;
 
 import java.io.ByteArrayOutputStream;
@@ -7,6 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.*;
 
 import com.itextpdf.text.*;
@@ -19,9 +24,16 @@ import org.onpar.utils.*;
 public class Registro extends HttpServlet
 {
 	
+	Font fBold=new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.BLACK);
+	Font fNormalBlack =new Font(FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLACK);
+	Font fNormal =new Font(FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLUE);
+	Font fUnderline =new Font(FontFamily.HELVETICA, 12, Font.UNDERLINE, BaseColor.BLACK);
+
+	
 	public Registro()
 	{
 		super();
+
 	}
 
 	
@@ -40,7 +52,11 @@ public class Registro extends HttpServlet
 			sbFilename.append(System.currentTimeMillis());
 			sbFilename.append(".pdf");
 
-			resp.setHeader("Cache-Control", "max-age=30");			
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+			resp.setDateHeader("Expires", 0); // Proxies.
+			
+			// resp.setHeader("Cache-Control", "max-age=30");			
 			resp.setContentType("application/pdf");
 			
 			StringBuffer sbContentDispValue = new StringBuffer();
@@ -150,7 +166,7 @@ public class Registro extends HttpServlet
 		Paragraph _p = new Paragraph("", fNormalBlack);
 		_p.add(new Phrase("ONPAR", fBold));;
 		_p.add(Chunk.NEWLINE);
-		_p.add(new Phrase("Oficina Nacional par la Atención Refugiados", fNormalBlack));
+		_p.add(new Phrase("Oficina Nacional Para la Atención Refugiados", fNormalBlack));
 		
 		// PdfPCell mLeftCell = new PdfPCell(new Paragraph("ONPAR", fBold));	
 		PdfPCell mLeftCell = new PdfPCell(_p);
@@ -195,7 +211,6 @@ public class Registro extends HttpServlet
 			
 			doc.add(new Paragraph(""));		
 			doc.add(Chunk.NEWLINE);
-			doc.add(Chunk.NEWLINE);
 			
 			Paragraph mParagraph0 = new Paragraph("REPUBLICA DE PANAMÁ", fBold);
 			mParagraph0.setAlignment(1);
@@ -209,10 +224,6 @@ public class Registro extends HttpServlet
 			
 			doc.add(new Paragraph(""));
 			doc.add(Chunk.NEWLINE);	
-			
-						
-			doc.add(Chunk.NEWLINE);	
-			doc.add(Chunk.NEWLINE);
 			
 			doc.add(new Paragraph("RECIBO DE REGISTRO", fBold));
 
@@ -283,7 +294,18 @@ public class Registro extends HttpServlet
 				e.printStackTrace();
 			}		
 
- 					
+						
+			doc.add(new Paragraph("Grupo Familiar:"));
+			doc.add(Chunk.NEWLINE);	
+			
+			try {
+				PdfPTable tab2 = getFamilyMembers(req, this.getServletContext());
+				
+				
+				doc.add(tab2);
+			} catch (Exception ex) {
+				System.out.println("Exception at line 422 or EntrevistaSocial");
+			}		
 			doc.add(Chunk.NEWLINE);	
 			doc.add(Chunk.NEWLINE);
 			
@@ -301,15 +323,20 @@ public class Registro extends HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+				
+
 			
 			
 			doc.add(new Phrase("Hora: "));
-			doc.add(new Chunk("8:00 AM", fNormal));			
+			doc.add(new Chunk("7:30 AM", fNormal));			
 			doc.add(Chunk.NEWLINE);				
 
 			doc.add(Chunk.NEWLINE);
 			doc.add(Chunk.NEWLINE);
 
+			
+			doc.add(new Paragraph("ESTE DOCUMENTO CERTIFICA QUE LA PERSONA HA PRESENTADO UNA SOLICITUD DE ASILO ANTE EL GOBIERNO PANAMEÑO. CUALQUIER DUDA AL RESPECTO CONTACTAR CON LAS OFICINAS DE LA ONPAR EN LOS TELÉFONOS 512-7228 o 512-7230.", fBold));
+			 
 		}
 		catch (DocumentException dex)
 		{
@@ -337,5 +364,137 @@ public class Registro extends HttpServlet
 		}
 		return baosPDF;
 	}	
-	 
+
+	private PdfPTable getFamilyMembers( final HttpServletRequest req2, final ServletContext ctx2)
+			throws Exception
+			
+	{	
+	 	HttpSession session2 = req2.getSession(true);
+		String mQuery = "SELECT ifnull(nombre,''), " +
+	    "   ifnull(fecha_de_nacimiento,''), " +
+	    "   ifnull(parentesco_lkup,''), " +
+	    "   ifnull(sexo,''), " +
+	    "   ifnull(nacionalidad,''), " +
+	    "   ifnull(pais_lkup,'') " +
+	    " FROM familia " +
+	    " where solicitante_id=? ";			
+	
+		PdfPTable tab = null;
+		
+
+
+		
+		Connection con = null;
+		PreparedStatement prest = null;
+		ResultSet rs = null;
+		
+		DataSource OnparDB;
+		javax.naming.Context initCtx = new javax.naming.InitialContext();
+		javax.naming.Context envCtx = (javax.naming.Context) initCtx.lookup("java:comp/env");
+		OnparDB = (DataSource) envCtx.lookup("jdbc/OnparDB");
+
+		try{
+			if(OnparDB == null) {
+				javax.naming.Context initCtx1 = new javax.naming.InitialContext();
+				javax.naming.Context envCtx1 = (javax.naming.Context) initCtx1.lookup("java:comp/env");
+				OnparDB = (DataSource) envCtx1.lookup("jdbc/OnparDB");
+			}
+		} catch(Exception e){
+			System.out.println("inside the context exception");
+			e.printStackTrace();
+		}
+
+		con = OnparDB.getConnection();	
+
+		try{
+	
+				prest=con.prepareStatement(mQuery);
+				prest.setString(1,session2.getAttribute("temp_solicitante_v2_id").toString());			
+				rs=prest.executeQuery();
+
+				int rows=1;
+				while(rs.next())
+				{
+					rows++;
+				}
+				
+				int cells=rows*6;
+				
+				System.out.println("Rows = " + rows);
+				System.out.println("Cells = " + cells);
+				
+				try
+				{
+					tab = new PdfPTable(6 /* columns */);
+					
+					tab.setWidthPercentage(100);
+			        tab.getDefaultCell().setUseAscender(true);
+			        tab.getDefaultCell().setUseDescender(true);
+				}
+				catch (Exception ex)
+				{
+					throw new RuntimeException(ex);
+				}
+				
+				tab.getDefaultCell().setNoWrap(false);
+				tab.getDefaultCell().setBorder(0);
+				tab.getDefaultCell().setBorderWidth(1.0f);
+				tab.getDefaultCell().setPadding(2);
+				
+				 
+				if ( rows > 1) {
+				 
+					tab.addCell(new Phrase("Nombre",fNormalBlack));
+					tab.addCell(new Phrase("Fecha de nacimiento",fNormalBlack));
+					tab.addCell(new Phrase("Parentesco",fNormalBlack));										
+					tab.addCell(new Phrase("Sexo",fNormalBlack));											
+					tab.addCell(new Phrase("Nacionalidad",fNormalBlack));											
+					tab.addCell(new Phrase("País",fNormalBlack));
+				
+				
+					tab.getDefaultCell().setNoWrap(true);
+					rs.beforeFirst();
+					
+					
+					
+					while(rs.next())
+					{
+						
+						tab.addCell(new Phrase(rs.getString(1), fNormal));
+						
+						try {
+							SimpleDateFormat df4 = new SimpleDateFormat("yyyy-MM-dd");
+							java.util.Date dt4 = df4.parse(rs.getString(2));			
+							SimpleDateFormat sf4 = new SimpleDateFormat("dd-MMM-yyyy", new Locale("es","ar"));
+							
+							tab.addCell(new Phrase(sf4.format(dt4), fNormal));
+	
+						} catch (Exception e) {
+							tab.addCell(new Phrase(rs.getString(2), fNormal)); 
+							e.printStackTrace();
+						}
+						
+						// 
+						tab.addCell(new Phrase(rs.getString(3), fNormal)); 
+						tab.addCell(new Phrase(rs.getString(4), fNormal));
+						tab.addCell(new Phrase(rs.getString(5), fNormal));
+						tab.addCell(new Phrase(rs.getString(6), fNormal));
+	
+					}
+				
+				}
+				
+				return tab;
+		}
+		catch(Exception e){
+			throw e;
+		} finally {
+			if(prest != null) { prest.close(); }
+			if(rs != null) { rs.close(); }
+			if(con != null) { con.close(); }
+		}
+	
+	}	
+
+	
 }

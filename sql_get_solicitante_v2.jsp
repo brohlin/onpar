@@ -429,13 +429,20 @@
 	
 	
 	try{
+		System.out.println("in the try");
 		if (session.getAttribute("email") != null) {
 
+			System.out.println("email not null");
 
 			prest=con.prepareStatement(mQuery);
+			System.out.println("after PS");
 			prest.setString(1,mId);
+			
+			System.out.println("after set string");
 			rs=prest.executeQuery();
 
+			System.out.println("after execute query");
+					
 			int size = 0;
 			
 System.out.println("before while loop");

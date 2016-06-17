@@ -9,8 +9,8 @@
 	<context-param>
 	    <description>Location to store uploaded file</description> 
 	    <param-name>file-upload</param-name> 
-	    <!-- param-value>/home/brohlin/jvm/apache-tomcat-7.0.33/domains/ruandunduma120.org/data/</param-value -->
-	    <param-value>/opt/tomcat/webapps/data/</param-value> 
+	    <param-value>/home/brohlin/jvm/apache-tomcat-7.0.33/domains/ruandunduma120.org/data/</param-value>
+	    <!-- param-value>/opt/tomcat/webapps/data/</param-value --> 
 	    <!-- param-value>C:/apache-tomcat-7.0.63/webapps/data/</param-value -->
 	</context-param>
 	

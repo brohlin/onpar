@@ -75,7 +75,10 @@ public class EntrevistaLegalCorta extends HttpServlet
 			// Read the HTTP 1.1 specification for full details
 			// about the Cache-Control header
 			//
-			resp.setHeader("Cache-Control", "max-age=30");
+			// resp.setHeader("Cache-Control", "max-age=30");
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0
+			resp.setDateHeader("Expires", 0); // Proxies.
 			
 			resp.setContentType("application/pdf");
 			
@@ -189,7 +192,7 @@ public class EntrevistaLegalCorta extends HttpServlet
 		Paragraph _p = new Paragraph("", fNormalBlack);
 		_p.add(new Phrase("ONPAR", fBold));;
 		_p.add(Chunk.NEWLINE);
-		_p.add(new Phrase("Oficina Nacional par la Atención Refugiados", fNormalBlack));
+		_p.add(new Phrase("Oficina Nacional Para la Atención Refugiados", fNormalBlack));
 		
 		// PdfPCell mLeftCell = new PdfPCell(new Paragraph("ONPAR", fBold));	
 		PdfPCell mLeftCell = new PdfPCell(_p);

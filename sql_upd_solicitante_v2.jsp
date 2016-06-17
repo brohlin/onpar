@@ -19,7 +19,9 @@
 	
 	String _miembro_relacion_ = "";
 	String _miembro_nombre_ = "";
-	String _miembro_edad_ = "";
+	String _miembro_fecha_de_nacimiento_ = "";
+	String _miembro_sexo_ = "";
+	String _miembro_nacionalidad_ = "";
 	String _miembro_ocupacion_ = "";
 	String _miembre_lugar_ = "";
 	String _numero_de_caso = session.getAttribute("temp_solicitante_v2_id").toString();
@@ -36,16 +38,22 @@
 		
 		_miembro_relacion_ = request.getParameter("miembro_" + Integer.toString(i));
 		_miembro_nombre_ = request.getParameter("miembro_nombre_" + Integer.toString(i)); 	
-		_miembro_edad_ =  request.getParameter("miembro_edad_" + Integer.toString(i)); 
+		_miembro_fecha_de_nacimiento_ =  request.getParameter("miembro_fecha_de_nacimiento_" + Integer.toString(i)); 
+		
+		_miembro_sexo_ =  request.getParameter("miembro_sexo_" + Integer.toString(i));
+		_miembro_nacionalidad_ =  request.getParameter("miembro_nacionalidad_" + Integer.toString(i));
+		
 		_miembro_ocupacion_ = request.getParameter("miembro_ocupacion_" + Integer.toString(i));
 		_miembre_lugar_ = request.getParameter("miembro_lugar_" + Integer.toString(i));
 
 		params.add( _miembro_nombre_ );
-		params.add( _miembro_edad_ );
+		params.add( _miembro_fecha_de_nacimiento_ );
 		params.add( _miembro_relacion_ );
 		params.add( _miembre_lugar_ );
 		params.add(session.getAttribute("id").toString());
 		params.add( _miembro_ocupacion_ );
+		params.add( _miembro_sexo_ );
+		params.add( _miembro_nacionalidad_ );
 		
 		System.out.println(_miembro_nombre_);
 		
