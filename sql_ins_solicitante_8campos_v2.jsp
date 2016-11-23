@@ -13,6 +13,17 @@
 <%@ page import="org.apache.commons.io.output.*" %>
 <%@ page import="com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException" %>
 
+
+<%
+	int rec = 0;
+	DynStringArray params = new DynStringArray();
+	params.add(session.getAttribute("temp_solicitante_v2_id").toString());
+	params.add("Insertó nuevo solicitante.");
+	params.add(session.getAttribute("id").toString());
+	params.add(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString());	
+	rec = Database.callProc("p_ins_history", params);
+	
+%>
 <%	
 	String p_pre_primer_nombre = request.getParameter("pre_primer_nombre");
 	String p_pre_apellido_paterno = request.getParameter("pre_apellido_paterno");
@@ -28,6 +39,13 @@
 	String p_entrevista_programada = request.getParameter("entrevista_programada");
 	String p_pre_telefono1 = request.getParameter("pre_telefono1");
 	String p_pre_direccion_actual = request.getParameter("pre_direccion_actual");
+	
+	String p_pre_ciudad_de_nacimiento = request.getParameter("pre_ciudad_de_nacimiento");
+	String p_pre_pais_de_nacimiento_lkup = request.getParameter("pre_pais_de_nacimiento_lkup");
+	String p_pre_otro_estatus_migratoria = request.getParameter("pre_otro_estatus_migratoria");
+	String p_pre_otro_estatus_migratoria_paises = request.getParameter("pre_otro_estatus_migratoria_paises");
+	String p_pre_pasaporte = request.getParameter("pre_pasaporte");
+	String p_pre_otros_documentos = request.getParameter("pre_otros_documentos");
 
 
 	DynStringArray parameters = new DynStringArray();
@@ -121,8 +139,14 @@
 					"adm_estatus_lkup, " +
 					"entrevista_programada, " +
 					"pre_telefono1, " +
-					"pre_direccion_actual ) " +
-					"values (?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?,?,?)";
+					"pre_direccion_actual, " +
+					"pre_ciudad_de_nacimiento, " +
+					"pre_pais_de_nacimiento_lkup, " +
+					"pre_otro_estatus_migratoria, " +
+					"pre_otro_estatus_migratoria_paises, " +
+					"pre_pasaporte, " +
+					"pre_otros_documentos) " +
+					"values (?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?,?,?,?,?,?,?,?,?)";
 						
 
 	int p_last_user_id = Integer.parseInt(session.getAttribute("id").toString());
@@ -170,6 +194,13 @@
 		prest.setString(14,p_entrevista_programada);
 		prest.setString(15,p_pre_telefono1);
 		prest.setString(16,p_pre_direccion_actual);
+		
+		prest.setString(17,p_pre_ciudad_de_nacimiento);
+		prest.setString(18,p_pre_pais_de_nacimiento_lkup);
+		prest.setString(19,p_pre_otro_estatus_migratoria);
+		prest.setString(20,p_pre_otro_estatus_migratoria_paises);
+		prest.setString(21,p_pre_pasaporte);
+		prest.setString(22,p_pre_otros_documentos);
 		
 		int mCount = prest.executeUpdate();
 

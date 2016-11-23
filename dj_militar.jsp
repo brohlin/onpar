@@ -13,8 +13,8 @@
 	<tr class="datatablerowaltv2">
 		<td><input type="text"  name="pre_mil_nombre" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_nombre") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_mil_lugar" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_lugar") %>" size="25" maxlength="40"></td>
-	    <td><input type="date"  name="pre_mil_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_desde") %>"></td>
-	    <td><input type="date"  name="pre_mil_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_hasta") %>"></td>
+	    <td><input type="text" class="datepicker"  name="pre_mil_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_desde") %>"></td>
+	    <td><input type="text" class="datepicker"  name="pre_mil_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_hasta") %>"></td>
 	    <td><input type="text"  name="pre_mil_puesto" value="<%= session.getAttribute("temp_solicitante_v2_pre_mil_puesto") %>" size="25" maxlength="40"></td>	    
 	</tr>
 </table>

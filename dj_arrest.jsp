@@ -16,13 +16,13 @@
 	    <td>Indicar la sentencia condenatoria</td>
 	</tr>
 	<tr class="datatablerowaltv2">
-		<td><input type="date"  name="pre_arrest_fecha" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_fecha") %>"></td>
+		<td><input type="text" class="datepicker"  name="pre_arrest_fecha" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_fecha") %>"></td>
 	    <td><input type="text"  name="pre_arrest_lugar" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_lugar") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_arrest_delito" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_delito") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_arrest_sentencia" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_sentencia") %>" size="25" maxlength="40"></td>	    
 	</tr>
 	<tr class="datatablerowaltv2">
-		<td><input type="date"  name="pre_arrest_fecha2" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_fecha2") %>"></td>
+		<td><input type="text" class="datepicker"  name="pre_arrest_fecha2" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_fecha2") %>"></td>
 	    <td><input type="text"  name="pre_arrest_lugar2" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_lugar2") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_arrest_delito2" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_delito2") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_arrest_sentencia2" value="<%= session.getAttribute("temp_solicitante_v2_pre_arrest_sentencia2") %>" size="25" maxlength="40"></td>	    

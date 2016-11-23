@@ -1,9 +1,13 @@
 <style type="text/css" title="Standard Style">
 
 #page {
+  /*
   margin-left:auto;
   margin-right:auto;
+  
   width:900px;
+  */
+  width: 100%;
 }
 
 a {#
@@ -117,6 +121,14 @@ body {
 }
 
 .boldRedTxt {
+	FONT-SIZE: 14px;
+	FONT-WEIGHT: bold;
+	COLOR: #003366;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Arial, Geneva, sans-serif
+}
+
+.boldRedTxt2 {
 	FONT-SIZE: 14px;
 	FONT-WEIGHT: bold;
 	COLOR: #FF0000;

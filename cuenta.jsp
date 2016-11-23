@@ -5,6 +5,7 @@
 id: <%= session.getAttribute("id") %><br>
 user_status_cd: <%= session.getAttribute("user_status_cd") %><br>
 role_id: <%= session.getAttribute("role_id") %><br>
+notificador: <%= session.getAttribute("notificador") %><br>
 email: <%= session.getAttribute("email") %><br>
 pwd: <%= session.getAttribute("pwd") %><br>
 first_nm: <%= session.getAttribute("first_nm") %><br>

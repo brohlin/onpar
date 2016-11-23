@@ -1,7 +1,10 @@
 package org.onpar.utils;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
@@ -11,6 +14,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfContentByte;
 
 import org.onpar.log.*;
 
@@ -18,6 +22,7 @@ import org.onpar.log.*;
 public class HeaderFooterPageEventLegal extends PdfPageEventHelper {
 	
 	PdfTemplate total;
+
 	
     
 	public void onOpenDocument(PdfWriter writer,Document document) {
@@ -40,6 +45,7 @@ public class HeaderFooterPageEventLegal extends PdfPageEventHelper {
         // ColumnText.showTextAligned(writer.getDirectContent(),Element.ALIGN_CENTER, new Phrase("Top Right"), rect.getRight(), rect.getTop(), 0);
     }
     public void onEndPage(PdfWriter writer,Document document) {
+
     	    	
     	Rectangle rect = writer.getBoxSize("art");
     	

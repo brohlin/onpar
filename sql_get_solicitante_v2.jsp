@@ -197,7 +197,9 @@
 					"ifnull(q30,''), " +
 					"ifnull(q31,''), " +
 					"ifnull(social_otra_pregunta,''), " +
-					"ifnull(legal_otra_pregunta,'') " +
+					"ifnull(legal_otra_pregunta,''), " +
+					"ifnull(legal_username,''), " +
+					"ifnull(social_username,'') " +
 					"from vw_solicitante " +
 					"where id = ? " + 
 					"and id > 3000 ";
@@ -401,6 +403,8 @@
 	session.setAttribute("temp_solicitante_v2_q31", null);
 	session.setAttribute("temp_solicitante_v2_social_otra_pregunta", null);
 	session.setAttribute("temp_solicitante_v2_legal_otra_pregunta", null);	
+	session.setAttribute("temp_solicitante_v2_legal_username", null);
+	session.setAttribute("temp_solicitante_v2_social_username", null);	
 	
 	Connection con = null;
 	PreparedStatement prest = null;
@@ -647,7 +651,8 @@ System.out.println("in while loop");
 				session.setAttribute("temp_solicitante_v2_q31", rs.getString(192));	
 				session.setAttribute("temp_solicitante_v2_social_otra_pregunta", rs.getString(193));
 				session.setAttribute("temp_solicitante_v2_legal_otra_pregunta", rs.getString(194));
-				
+				session.setAttribute("temp_solicitante_v2_legal_username", rs.getString(195));
+				session.setAttribute("temp_solicitante_v2_social_username", rs.getString(196));
 			}
 
 			System.out.println("after the while loop");

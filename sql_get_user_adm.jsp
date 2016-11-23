@@ -2,7 +2,7 @@
 <%@ page import="javax.sql.*" %>
 
 <%
-	String mQuery = "select format(id, '0'), user_status_cd, format(role_id,'0'), email, pwd, first_nm, last_nm, position_title, organization, ifnull(tel_nbr,''), ifnull(skype_handle,''), ifnull(alternate,''), DATE_FORMAT(last_mod_tmstmp,'%W, %M %e, %Y @ %h:%i %p')  from user where id = ?";
+	String mQuery = "select format(id, '0'), user_status_cd, format(role_id,'0'), email, pwd, first_nm, last_nm, position_title, organization, ifnull(tel_nbr,''), ifnull(skype_handle,''), ifnull(alternate,''), DATE_FORMAT(last_mod_tmstmp,'%W, %M %e, %Y @ %h:%i %p'), ifnull(notificador,'No')  from user where id = ?";
 	
 	String mId = request.getParameter("id");
 	
@@ -19,6 +19,7 @@
 	session.setAttribute("temp_skype_handle",null);
 	session.setAttribute("temp_alternate",null);
 	session.setAttribute("temp_last_mod_tmstmp",null);	
+	session.setAttribute("temp_notificador",null);
 	
 	Connection con = null;
 	PreparedStatement prest = null;
@@ -68,7 +69,8 @@
 				session.setAttribute("temp_tel_nbr",rs.getString(10));
 				session.setAttribute("temp_skype_handle",rs.getString(11));
 				session.setAttribute("temp_alternate",rs.getString(12));
-				session.setAttribute("temp_last_mod_tmstmp",rs.getString(13));			
+				session.setAttribute("temp_last_mod_tmstmp",rs.getString(13));
+				session.setAttribute("temp_notificador",rs.getString(14));
 			}
 
 			if (size == 0) {

@@ -9,14 +9,14 @@
 	if (session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").equals("Digitalizar Caso Cerrado")) {
 %>
 	<tr class="datatablerowv2">
-		<td class="boldRedTxt">Fecha de entrega de la solicitud: <input type="date" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" >		
+		<td class="boldRedTxt">Fecha de entrega de la solicitud: <input type="text" class="datepicker" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" >		
 		</td>
 	</tr>
 <%
 	} else {
 %>	
 	<tr class="datatablerowv2">
-		<td class="boldRedTxt">Fecha de entrega de la solicitud: <input type="date" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" required="required" >		
+		<td class="boldRedTxt">Fecha de entrega de la solicitud: <input type="text" class="datepicker" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" required="required" >		
 		</td>
 	</tr>	
 <%

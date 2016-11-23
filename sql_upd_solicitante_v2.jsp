@@ -12,6 +12,23 @@
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
 <%@ page import="org.apache.commons.io.output.*" %>
 
+<%@ page import="org.onpar.database.*" %>
+<%@ page import="org.onpar.utils.*" %>
+<%@ page import="org.onpar.utils.arrays.*" %>
+<%@ page import="org.onpar.log.*" %>
+<%@ page import="javax.sql.*" %>
+
+<%
+	int rec = 0;
+	DynStringArray params_history = new DynStringArray();
+	params_history.add(session.getAttribute("temp_solicitante_v2_id").toString());
+	params_history.add("Actualizó registro/declaración jurada de solicitante.");
+	params_history.add(session.getAttribute("id").toString());
+	params_history.add(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString());	
+	rec = Database.callProc("p_ins_history", params_history);
+	
+%>
+
 <%
 	int _num_fam_members = Integer.parseInt(request.getParameter("num_fam_members"));
 	int recs = 0;
@@ -110,6 +127,7 @@
 					"pre_ui_fecha_recibido=?, " + 
 					"pre_fecha_llegada_panama=?, " +
 					"pre_estatus_civil_lkup=?, " +
+					"entrevista_programada=?, " +
 					"last_mod_tmstmp = now(),  " +
 					"last_user_id=? " + 
 					  "where id = ?";
@@ -188,8 +206,10 @@
 			prest.setString(44,request.getParameter("pre_ui_fecha_recibido"));
 			prest.setString(45,request.getParameter("pre_fecha_llegada_panama"));
 			prest.setString(46,request.getParameter("pre_estatus_civil_lkup"));
-			prest.setString(47,session.getAttribute("id").toString());  //user id
-			prest.setString(48,request.getParameter("id")); //solicitante id
+			prest.setString(47,request.getParameter("entrevista_programada"));
+			
+			prest.setString(48,session.getAttribute("id").toString());  //user id
+			prest.setString(49,request.getParameter("id")); //solicitante id
 			
 			int mCount = prest.executeUpdate();
 	

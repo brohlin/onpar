@@ -18,24 +18,24 @@
 	
 	if (session.getAttribute("role_id") != null) {
 			mQuery = "select l.value, " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 0 and 5 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 0 and 5 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 6 and 11 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 6 and 11 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 12 and 17 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 12 and 17 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 18 and 25 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 18 and 25 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 26 and 36 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 26 and 36 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 37 and 46 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 37 and 46 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 47 and 60 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 47 and 60 and pre_genero_lkup='Masculino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) > 60 and pre_genero_lkup='Feminino',1,0)), " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) > 60 and pre_genero_lkup='Masculino',1,0)), " +
-				    "sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) is null and pre_genero_lkup='Feminino',1,0)),  " +
-					"sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) is null and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 0 and 5 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 0 and 5 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 6 and 11 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 6 and 11 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 12 and 17 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 12 and 17 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 18 and 25 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 18 and 25 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 26 and 36 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 26 and 36 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 37 and 46 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 37 and 46 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 47 and 60 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 47 and 60 and pre_genero_lkup='Masculino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) > 60 and pre_genero_lkup='Feminino',1,0)), " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) > 60 and pre_genero_lkup='Masculino',1,0)), " +
+				    "sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) is null and pre_genero_lkup='Feminino',1,0)),  " +
+					"sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) is null and pre_genero_lkup='Masculino',1,0)), " +
 					"sum(if(pre_primer_nombre is not null and length(trim(pre_primer_nombre)) > 0,1,0)), " +
 					"ifnull(f_get_dependents_count_quarter(pre_nacionalidad_lkup,?,?,?),0) " +
 					"from lkup l  " +
@@ -73,16 +73,16 @@
 			}
 
 			if (mQuarter.equals("All") || mQuarter.equals(""))  {
-				mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+				mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 			} else {
 				if (mQuarter.equals("01") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('01','02','03') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('01','02','03') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("02") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('04','05','06') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('04','05','06') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("03") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('07','08','09') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('07','08','09') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("04") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('10','11','12') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('10','11','12') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				}
 			}				
 			// 
@@ -90,24 +90,24 @@
 			
 			mQuery = mQuery + "union all " +
 					" select 'Total', " +
-					"       ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 0 and 5 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 0 and 5 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 6 and 11 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 6 and 11 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 12 and 17 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 12 and 17 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 18 and 25 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 18 and 25 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 26 and 36 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 26 and 36 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 37 and 46 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 37 and 46 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 47 and 60 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) between 47 and 60 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) > 60 and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) > 60 and pre_genero_lkup='Masculino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) is null and pre_genero_lkup='Feminino',1,0)),0), " +
-					"		ifnull(sum(if(floor(datediff(pre_fecha_solicitud_onpar,pre_fecha_de_nacimiento)/365.25) is null and pre_genero_lkup='Masculino',1,0)),0), " +
+					"       ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 0 and 5 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 0 and 5 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 6 and 11 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 6 and 11 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 12 and 17 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 12 and 17 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 18 and 25 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 18 and 25 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 26 and 36 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 26 and 36 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 37 and 46 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 37 and 46 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 47 and 60 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) between 47 and 60 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) > 60 and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) > 60 and pre_genero_lkup='Masculino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) is null and pre_genero_lkup='Feminino',1,0)),0), " +
+					"		ifnull(sum(if(floor(datediff(f_format_date(pre_fecha_solicitud_onpar),f_format_date(pre_fecha_de_nacimiento))/365.25) is null and pre_genero_lkup='Masculino',1,0)),0), " +
 					"		ifnull(sum(if(pre_primer_nombre is not null and length(trim(pre_primer_nombre)) > 0,1,0)),0), " + 
 					"       ifnull(f_get_dependents_total_quarter(?,?,?),0) " +
 					"		from lkup l " +
@@ -145,16 +145,16 @@
 			}
 
 			if (mQuarter.equals("All") || mQuarter.equals(""))  {
-				mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";			
+				mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";			
 			} else {
 				if (mQuarter.equals("01") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('01','02','03') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('01','02','03') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("02") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('04','05','06') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('04','05','06') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("03") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('07','08','09') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('07','08','09') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				} else if (mQuarter.equals("04") ) {
-					mQuery = mQuery + " and date_format(pre_fecha_solicitud_onpar, '%m') in ('10','11','12') and date_format(pre_fecha_solicitud_onpar, '%Y')=? ";
+					mQuery = mQuery + " and date_format(f_format_date(pre_fecha_solicitud_onpar), '%m') in ('10','11','12') and date_format(f_format_date(pre_fecha_solicitud_onpar), '%Y')=? ";
 				}	
 			}
 	}

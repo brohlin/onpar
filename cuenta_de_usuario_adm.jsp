@@ -113,6 +113,31 @@
 		</select>	
 	</td>
 </tr>
+
+<tr>
+	<td align="right">
+		<span class="smRedTxt">*</span><label for="Notificador"> Notificador
+	</td>
+	<td>
+		<select name="notificador" tabindex="<%= mCounter++ %>" size="1" >
+		<%	
+			if (session.getAttribute("temp_notificador").equals("Sí")) {
+		%>
+				<option value="Sí" selected>Sí</option>
+				<option value="No">No</option>	
+		<%
+			} else if (session.getAttribute("temp_notificador").equals("No")) {
+		%>
+				<option value="Sí" >Sí</option>
+				<option value="No" selected>No</option>	
+		<%		
+			} 
+		%>	
+		</select>	
+	</td>
+</tr>
+
+
 <!--- User Status --->
 <tr>
 	<td align="right">

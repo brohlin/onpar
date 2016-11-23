@@ -1,18 +1,25 @@
 package org.onpar.utils;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.ColumnText;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPCell;
 
-import org.onpar.log.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 
 public class HeaderFooterPageEvent extends PdfPageEventHelper {
@@ -40,7 +47,36 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
         // ColumnText.showTextAligned(writer.getDirectContent(),Element.ALIGN_CENTER, new Phrase("Top Right"), rect.getRight(), rect.getTop(), 0);
     }
     public void onEndPage(PdfWriter writer,Document document) {
-    	    	
+    	
+    	
+        PdfContentByte canvas = writer.getDirectContentUnder();
+		Image _image;
+		try {
+			// _image = Image.getInstance("/apache-tomcat-7.0.63/webapps/onpar/img/mingob_wm.jpg");
+			// _image = Image.getInstance("/home/brohlin/jvm/apache-tomcat-7.0.33/domains/ruandunduma120.org/onpar/img/mingob_wm.jpg");
+			_image = Image.getInstance("/opt/tomcat/webapps/onpar/img/mingob_wm.jpg");
+			
+			_image.setAbsolutePosition(150, 310);
+			
+			try {
+				canvas.addImage(_image);
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (BadElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+      
+        
     	Rectangle rect = writer.getBoxSize("art");
     	
     	PdfPTable table = new PdfPTable(2);

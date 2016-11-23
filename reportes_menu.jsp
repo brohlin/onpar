@@ -35,11 +35,17 @@
 				<li><a href="/onpar/main.jsp?target=reporte_pais_sexo_edad_ano_trimestre">País por rango de edades y sexo, filtrado por estatus del caso, año y trimestre</a></li>
 				<br>				
 				<li><a href="/onpar/main.jsp?target=reporte_edad_por_pais">Rango de Edades por Sexo por País de Origen (datos viejos de la hoja de cálculo de Ximara)</a></li>
+				<br>
+				<li><a href="/onpar/main.jsp?target=reporte_sitas">Sitas</a></li>
 <%
 	if ((session.getAttribute("role_id") != null) && (session.getAttribute("role_id").equals("4"))) {
 %>
 				<br>				
 				<li><a href="/onpar/main.jsp?target=export_to_excel">Exportar los datos a Excel</a></li>
+				<br>
+				<li><a href="/onpar/main.jsp?target=uso_total_por_usuario">Uso total por usuario</a></li>
+				<br>
+				<li><a href="/onpar/main.jsp?target=uso_mes_por_usuario_2016">Uso mensual por usuario en 2016</a></li>
 <%
 	}
 %>

@@ -12,6 +12,7 @@
 <option value="Alemania"<% if (mPais.equals("Alemania")) {%> selected <% } %>>Alemania</option>
 <option value="Andorra"<% if (mPais.equals("Andorra")) {%> selected <% } %>>Andorra</option>
 <option value="Anguila"<% if (mPais.equals("Anguila")) {%> selected <% } %>>Anguila</option>
+<option value="Angola"<% if (mPais.equals("Angola")) {%> selected <% } %>>Angola</option>
 <option value="Antigua y Barbuda"<% if (mPais.equals("Antigua y Barbuda")) {%> selected <% } %>>Antigua y Barbuda</option>
 <option value="Antillas Holandesas"<% if (mPais.equals("Antillas Holandesas")) {%> selected <% } %>>Antillas Holandesas</option>
 <option value="Arabia Saudita"<% if (mPais.equals("Arabia Saudita")) {%> selected <% } %>>Arabia Saudita</option>

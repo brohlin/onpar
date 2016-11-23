@@ -20,7 +20,7 @@
 	</tr>
 	<tr class="datatablerowaltv2">
 		<td colspan="2"><input type="text"  name="pre_otros_nombres" value="<%= session.getAttribute("temp_solicitante_v2_pre_otros_nombres") %>" size="20" maxlength="20"></td>
-	    <td colspan="2"><input type="date"  name="pre_fecha_de_nacimiento" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_de_nacimiento") %>" required="required" ></td>
+	    <td colspan="2"><input type="text" class="datepicker"  name="pre_fecha_de_nacimiento" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_de_nacimiento") %>" required="required" ></td>
 	</tr>
 
 	<tr class="datatablerowv2">
@@ -132,12 +132,18 @@
 </tr>
 
 <tr class="datatablerowaltv2">
-	<td colspan="4" class="boldRedTxt">Fecha de entrada a Panamá: <input type="date" name="pre_fecha_llegada_panama" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_llegada_panama") %>" required="required"></td>
+	<td colspan="4" class="boldRedTxt">Fecha de entrada a Panamá: <input type="text" class="datepicker" name="pre_fecha_llegada_panama" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_llegada_panama") %>" required="required"></td>
 </tr>
 
 <tr class="datatablerowv2">
-	<td colspan="4" class="boldRedTxt">Fecha de entrega de la solicitud: <input type="date" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" required="required" >	</td>
+	<td colspan="4" class="boldRedTxt">Fecha de entrega de la solicitud: <input type="text" class="datepicker" name="pre_fecha_solicitud_onpar" value="<%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %>" required="required" >	</td>
 </tr>
+
+<tr class="datatablerowaltv2">
+	<td colspan="4" class="boldRedTxt">Fecha de entrevista: <input type="text" class="datepicker" name="entrevista_programada" value="<%= session.getAttribute("temp_solicitante_v2_entrevista_programada") %>" required="required"></td>
+</tr>
+
+
 
 </table>
 </fieldset>

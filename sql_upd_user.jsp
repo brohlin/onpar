@@ -14,7 +14,8 @@
 							"tel_nbr = ?,  " +
 							"skype_handle = ?,  " + 
 							"alternate = ?,  " +
-							"last_mod_tmstmp = now()  " + 
+							"last_mod_tmstmp = now(),  " + 
+							"notificador = ?  " +
 					  "where id = ?";
 	
 	String pId = request.getParameter("id");
@@ -29,6 +30,7 @@
 	String pTel_nbr = request.getParameter("tel_nbr");
 	String pSkype_handle = request.getParameter("skype_handle");
 	String pAlternate = request.getParameter("alternate");
+	String pNotificador = request.getParameter("notificador");
 	
 	Connection con6 = null;
 	PreparedStatement prest6 = null;
@@ -68,7 +70,8 @@
 			prest6.setString(9,pTel_nbr);
 			prest6.setString(10,pSkype_handle);
 			prest6.setString(11,pAlternate);
-			prest6.setString(12,pId);
+			prest6.setString(12,pNotificador);
+			prest6.setString(13,pId);
 			
 			int mCount = prest6.executeUpdate();
 %>

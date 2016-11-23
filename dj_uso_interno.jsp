@@ -11,7 +11,7 @@
 		<td>Número de caso: <%= session.getAttribute("temp_solicitante_v2_id") %></td>	    
 	</tr>	
 	<tr class="datatablerowv2">
-		<td>Fecha recibido: <input type="date" name="pre_ui_fecha_recibido" value="<%= session.getAttribute("temp_solicitante_v2_pre_ui_fecha_recibido") %>">		
+		<td>Fecha recibido: <input type="text" class="datepicker" name="pre_ui_fecha_recibido" value="<%= session.getAttribute("temp_solicitante_v2_pre_ui_fecha_recibido") %>">		
 		</td>
 	</tr>
 

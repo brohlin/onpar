@@ -212,10 +212,6 @@ public class EntrevistaSocial extends HttpServlet
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_pre_fecha_entrevista_social").toString(), FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL, new java.awt.Color(0, 0, 255))));			
 			doc.add(Chunk.NEWLINE);				
 
-			doc.add(new Phrase("Edad: "));
-			doc.add(new Chunk(session.getAttribute("temp_solicitante_pre_edad").toString(), FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL, new java.awt.Color(0, 0, 255))));			
-			doc.add(Chunk.NEWLINE);	
-
 			doc.add(new Phrase("Estado Civil: "));
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_pre_estatus_civil_lkup").toString(), FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL, new java.awt.Color(0, 0, 255))));			
 			doc.add(Chunk.NEWLINE);				

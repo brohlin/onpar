@@ -235,11 +235,6 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_primer_nombre") + " " + session.getAttribute("temp_solicitante_v2_pre_apellido_paterno") + " " +  session.getAttribute("temp_solicitante_v2_pre_apellido_materno"), fNormal));			
 			doc.add(Chunk.NEWLINE);	
 			doc.add(Chunk.NEWLINE);	
-
-			doc.add(new Phrase("EDAD:  "));
-			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_edad").toString(), fNormal));			
-			doc.add(Chunk.NEWLINE);	
-			doc.add(Chunk.NEWLINE);	
 			
 			doc.add(new Phrase("FECHA DE NACIMIENTO:  "));
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_fecha_de_nacimiento").toString(), fNormal));			
@@ -479,6 +474,7 @@ public class EntrevistaSocial_v2 extends HttpServlet
 			doc.add(new Paragraph("Solicitante"));
 			doc.add(new Paragraph(" "));
 			doc.add(new Paragraph("                                                                ", fUnderline));
+			doc.add(new Paragraph(session.getAttribute("temp_solicitante_v2_social_username").toString(), fNormal));
 			doc.add(new Paragraph("Entrevistador de ONPAR"));
 			
 			

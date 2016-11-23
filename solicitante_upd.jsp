@@ -282,7 +282,7 @@
 
         	<td width="200"><a href="/onpar/ViewPDF?file=adm_peticion_para_la_recon" target="_blank">Ver Petición de reconsideración a la Dirección</a></td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_adm_fecha_de_pedir_recon") %>"  tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_adm_fecha_de_pedir_recon") %>"  tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
 
 <%
@@ -291,7 +291,7 @@
     
         	<td width="200"><span class="smRedTxt">*</span> Subir Petición de reconsideración a la Dirección</td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
 
 <%
@@ -312,7 +312,7 @@
 
         	<td width="200"><a href="/onpar/ViewPDF?file=ref_peticion_para_la_recon" target="_blank">Ver Petición de reconsideración a la Comisión</a></td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_ref_fecha_de_pedir_recon") %>"  tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_ref_fecha_de_pedir_recon") %>"  tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
 
 <%
@@ -321,7 +321,7 @@
     
         	<td width="200"><span class="smRedTxt">*</span> Subir Petición de reconsideración a la Comisión</td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
 
 <%
@@ -342,7 +342,7 @@
 
         	<td width="200"><a href="/onpar/ViewPDF?file=ref_peticion_para_la_apel" target="_blank">Ver Petición de apelación a la Comisión</a></td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" value="<%= session.getAttribute("temp_solicitante_ref_fecha_de_pedir_apel") %>" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" value="<%= session.getAttribute("temp_solicitante_ref_fecha_de_pedir_apel") %>" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
         	
 <%
@@ -350,7 +350,7 @@
 %>      
         	<td width="200"><span class="smRedTxt">*</span> Subir Petición de apelación a la Comisión</td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		}
@@ -369,7 +369,7 @@
 
         	<td width="200"><a href="/onpar/ViewPDF?file=renuncia" target="_blank">Ver Renuncia</a></td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" value="<%= session.getAttribute("temp_solicitante_fecha_de_renuncia") %>" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" value="<%= session.getAttribute("temp_solicitante_fecha_de_renuncia") %>" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
         	
 <%
@@ -378,7 +378,7 @@
  
         	<td width="200"><span class="smRedTxt">*</span> Subir Renuncia</td>
         	<td width="200"><input tabindex="<%= mCounter++ %>" type="file" name="file" accept="application/pdf" required="required">
-            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" tabindex="<%= mCounter++ %>" type="date" required="required"></td>
+            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" tabindex="<%= mCounter++ %>" type="text" class="datepicker" required="required"></td>
             <td width="100"><input tabindex="<%= mCounter++ %>" type="submit" class="butnTxt" value="Guardar" name="save">
         	
 <%

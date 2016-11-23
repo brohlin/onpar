@@ -2,7 +2,7 @@
 <%@ page import="javax.sql.*" %>
 
 <%
-	String mQuery = "select format(id, '0'), user_status_cd, format(role_id,'0'), email, pwd, first_nm, last_nm, position_title, organization, ifnull(tel_nbr,''), ifnull(skype_handle,''), ifnull(alternate,''), DATE_FORMAT(last_mod_tmstmp,'%W, %M %e, %Y @ %h:%i %p')  from user where email = ?";
+	String mQuery = "select format(id, '0'), user_status_cd, format(role_id,'0'), email, pwd, first_nm, last_nm, position_title, organization, ifnull(tel_nbr,''), ifnull(skype_handle,''), ifnull(alternate,''), DATE_FORMAT(last_mod_tmstmp,'%W, %M %e, %Y @ %h:%i %p'), ifnull(notificador,'No')  from user where email = ?";
 	
 	String mId = "";
 	String mUser_status_cd = "";
@@ -17,6 +17,7 @@
 	String mSkype_handle = "";
 	String mAlternate = "";
 	String mLast_mod_tmstmp = "";
+	String mNotificador = "";
 	
 	
 	Connection con = null;
@@ -68,6 +69,7 @@
 				mSkype_handle = rs.getString(11);
 				mAlternate = rs.getString(12);
 				mLast_mod_tmstmp = rs.getString(13);
+				mNotificador = rs.getString(14);
 				
 				session.setAttribute("id",mId);
 				session.setAttribute("user_status_cd",mUser_status_cd);
@@ -81,8 +83,7 @@
 				session.setAttribute("tel_nbr",mTel_nbr);
 				session.setAttribute("skype_handle",mSkype_handle);
 				session.setAttribute("alternate",mAlternate);
-				session.setAttribute("last_mod_tmstmp",mLast_mod_tmstmp);
-				
+				session.setAttribute("notificador",mNotificador);				
 			}
 
 			if (size2 == 0) {

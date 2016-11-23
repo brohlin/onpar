@@ -135,14 +135,14 @@
 %>
         	<td width="200"><a href="/onpar/ViewPDF_v2?file=adm_peticion_para_la_recon" target="_blank">Ver Petición de reconsideración a la Dirección</a></td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput7"></td>
-            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_v2_adm_fecha_de_pedir_recon") %>"   type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_v2_adm_fecha_de_pedir_recon") %>"   type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">
 <%
 		} else {
 %>    
         	<td width="200">Subir Petición de reconsideración a la Dirección</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput7"></td>
-            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon"  type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="adm_fecha_de_pedir_recon"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">
 <%
 		}
@@ -159,14 +159,14 @@
 %>
         	<td width="200"><a href="/onpar/ViewPDF_v2?file=ref_peticion_para_la_recon" target="_blank">Ver Petición de reconsideración a la Comisión</a></td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput8"></td>
-            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_v2_ref_fecha_de_pedir_recon") %>"   type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon" value="<%= session.getAttribute("temp_solicitante_v2_ref_fecha_de_pedir_recon") %>"   type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">
 <%
 		} else {
 %>    
         	<td width="200">Subir Petición de reconsideración a la Comisión</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput8"></td>
-            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon"  type="date" required="required"></td>
+            <td width="100">Fecha de pedir reconsideración: <input name="ref_fecha_de_pedir_recon"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">
 <%
 		}
@@ -183,14 +183,14 @@
 %>
         	<td width="200"><a href="/onpar/ViewPDF_v2?file=ref_peticion_para_la_apel" target="_blank">Ver Petición de apelación a la Comisión</a></td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput9"></td>
-            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" value="<%= session.getAttribute("temp_solicitante_v2_ref_fecha_de_pedir_apel") %>"  type="date" required="required"></td>
+            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel" value="<%= session.getAttribute("temp_solicitante_v2_ref_fecha_de_pedir_apel") %>"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		} else {
 %>      
         	<td width="200">Subir Petición de apelación a la Comisión</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput9"></td>
-            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel"  type="date" required="required"></td>
+            <td width="100">Fecha de apelación: <input name="ref_fecha_de_pedir_apel"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		}
@@ -207,14 +207,14 @@
 %>
         	<td width="200"><a href="/onpar/ViewPDF_v2?file=renuncia" target="_blank">Ver Renuncia</a></td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput10"></td>
-            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" value="<%= session.getAttribute("temp_solicitante_v2_fecha_de_renuncia") %>"  type="date" required="required"></td>
+            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia" value="<%= session.getAttribute("temp_solicitante_v2_fecha_de_renuncia") %>"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		} else {
 %>       
         	<td width="200">Subir Renuncia</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput10"></td>
-            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia"  type="date" required="required"></td>
+            <td width="100">Fecha de renuncia: <input name="fecha_de_renuncia"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		}
@@ -245,7 +245,7 @@
 				</select>	
         	</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput11"></td>
-            <td width="100">Fecha de quitar refugiado reconocido: <input name="fecha_de_quitar_refug_recon" value="<%= session.getAttribute("temp_solicitante_v2_fecha_de_quitar_refug_recon") %>"  type="date" required="required"></td>
+            <td width="100">Fecha de quitar refugiado reconocido: <input name="fecha_de_quitar_refug_recon" value="<%= session.getAttribute("temp_solicitante_v2_fecha_de_quitar_refug_recon") %>"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">        	
 <%
 		} else {
@@ -263,7 +263,7 @@
 				</select>	
         	</td>
         	<td width="200"><input  type="file" name="file" accept="application/pdf" required="required" id="fileinput11"></td>
-            <td width="100">Fecha de quitar refugiado reconocido: <input name="fecha_de_quitar_refug_recon"  type="date" required="required"></td>
+            <td width="100">Fecha de quitar refugiado reconocido: <input name="fecha_de_quitar_refug_recon"  type="text" class="datepicker" required="required"></td>
             <td width="100"><input  type="submit" class="butnTxt" value="Guardar" name="save">	
 <%
 		}

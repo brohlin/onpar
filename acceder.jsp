@@ -27,6 +27,7 @@
 			<p>La Oficina Nacional Para la Atención de Refugiados (ONPAR) mantiene una lista de solicitantes de la condición de refugiado y refugiados/as reconocidos/as en Panamá.</p>
 			<p>Para crear y modificar una solicitud o para obtener informes sobre los solicitantes, usted tiene que <a href="/onpar/main.jsp?target=registrar">registrarse</a> primero. Si ya tiene cuenta, puede ingresar al sistema de ONPAR.
 			</p>
+			<p class="boldRedTxt2"><%= _msg %></p>
 			<form action="/onpar/sql_get_login.jsp" method="post">
 				<table width="270" border="0" cellspacing="0" cellpadding="0" align="left">
 					<tr>

@@ -184,7 +184,7 @@
 	<span class="smRedTxt">*</span> Fecha de Nacimiento
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_de_nacimiento" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_de_nacimiento" required="required">
 	</td>
 </tr>
 
@@ -574,7 +574,7 @@
 	<span class="smRedTxt">*</span> Fecha en que salió de su país de origen
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_de_salida_origen" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_de_salida_origen" required="required">
 	</td>
 </tr>
 
@@ -583,7 +583,7 @@
 	<span class="smRedTxt">*</span> Fecha en que ingresó a la República de Panamá
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_llegada_panama" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_llegada_panama" required="required">
 	</td>
 </tr>
 
@@ -789,7 +789,7 @@
 	<span class="smRedTxt">*</span> Fecha de presentación a ONPAR
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_solicitud_onpar" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_solicitud_onpar" required="required">
 	</td>
 </tr>
 
@@ -798,7 +798,7 @@
 	<span class="smRedTxt">*</span> Fecha de entrevista legal
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_entrevista_legal" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_entrevista_legal" required="required">
 	</td>
 </tr>
 
@@ -807,7 +807,7 @@
 	<span class="smRedTxt">*</span> Fecha de entrevista social
 	</td>
 	<td>
-		<input type="date" tabindex="<%= mCounter++ %>" name="pre_fecha_entrevista_social" required="required">
+		<input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="pre_fecha_entrevista_social" required="required">
 	</td>
 </tr>
 

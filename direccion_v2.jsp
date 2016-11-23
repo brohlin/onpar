@@ -18,7 +18,7 @@ if (session.getAttribute("role_id").equals("2") || session.getAttribute("role_id
 			<br>	
 			</td>
 		</tr>
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="date"  name="adm_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="text" class="datepicker"  name="adm_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión original del caso</td>
 			<td>
 				<select name="adm_dec_resol_lkup" size="1">
@@ -56,7 +56,7 @@ if (session.getAttribute("role_id").equals("2") || session.getAttribute("role_id
 		<br>
 		<br>	
 		
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="date" name="adm_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="text" class="datepicker" name="adm_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión de la reconsideración del caso: </td>
 			<td>
 				<select name="adm_dec_resol_recon_lkup" size="1">

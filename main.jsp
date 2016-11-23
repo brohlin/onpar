@@ -3,7 +3,26 @@
  	
  <%
  	String mSearch = "Record Found";
+ 	String _msg = "";
  
+ 	try {
+ 		_msg = request.getParameter("msg");
+		
+		if (_msg == null || _msg.equals("null")) {
+			_msg = "hello";
+		}
+		
+		if (_msg.equals("noacceso")) {
+			_msg = "No se encontró el usuario o la contraseña no es correcta. Por favor, inténtelo de nuevo.";
+		} else  {
+			_msg = "";
+		}
+		
+		
+	} catch (Exception ex) {
+		// dont do anything here
+	} 	
+ 	
  	try {
 		mSearch = request.getParameter("search");
 		if (mSearch.equals("norecfound")) {
@@ -110,6 +129,14 @@
 							%>
 										<jsp:include page="/reporte_pais_sexo_edad_ano.jsp" />
 							<%
+									}  else if (mTarget.equals("uso_total_por_usuario")) {
+							%>
+										<jsp:include page="/reporte_uso_total_por_usuario.jsp" />
+							<%
+									}  else if (mTarget.equals("uso_mes_por_usuario_2016")) {
+							%>
+										<jsp:include page="/reporte_uso_mes_por_usuario_2016.jsp" />
+							<%
 									}  else if (mTarget.equals("reporte_pais_sexo_edad_ano_trimestre")) {
 							%>
 										<jsp:include page="/reporte_pais_sexo_edad_ano_trimestre.jsp" />
@@ -150,6 +177,14 @@
 							%>
 										<jsp:include page="/solicitante_upd_v2.jsp" />																												
 							<%							
+								    } else if (mTarget.equals("entrevista_social_familia")) {
+							%>
+										<jsp:include page="/entrevista_social_familia.jsp" />																												
+							<%							
+								    } else if (mTarget.equals("entrevista_legal_familia")) {
+							%>
+										<jsp:include page="/entrevista_legal_familia.jsp" />																												
+							<%							
 								    } else if (mTarget.equals("miembro_de_familia")) {
 							%>
 										<%@include file="/miembro_de_familia.jsp" %>																												
@@ -174,6 +209,14 @@
 							%>
 										<jsp:include page="/prueba_v2.jsp" />																												
 							<%															
+								    } else if (mTarget.equals("ampliacion_v2")) {
+							%>
+										<jsp:include page="/ampliacion_v2.jsp" />																												
+							<%															
+								    } else if (mTarget.equals("ampliacion_upd_v2")) {
+							%>
+										<jsp:include page="/ampliacion_upd_v2.jsp" />																											
+							<%																	
 								    } else if (mTarget.equals("resolucion_v2")) {
 							%>
 										<jsp:include page="/resolucion_v2.jsp" />	
@@ -182,6 +225,10 @@
 								    } else if (mTarget.equals("resolucion_upd_v2")) {
 							%>
 										<jsp:include page="/resolucion_upd_v2.jsp" />																											
+							<%																	
+								    } else if (mTarget.equals("reporte_sitas")) {
+							%>
+										<jsp:include page="/reporte_sitas.jsp" />																											
 							<%																	
 								    }  else if (mTarget.equals("solicitante_8campos_v2")) {
 							%>

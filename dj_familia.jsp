@@ -43,7 +43,7 @@
 			</select>		
 		</td>
 	    <td><input type="text"  name="miembro_nombre_<%= size+1 %>" value="<%= db.getRow(size).get(3) %>" size="25" maxlength="40" required="required"></td>
-	    <td><input type="date"  name="miembro_fecha_de_nacimiento_<%= size+1 %>" value="<%= db.getRow(size).get(4) %>" required="required"></td>
+	    <td><input type="text" class="datepicker" name="miembro_fecha_de_nacimiento_<%= size+1 %>" value="<%= db.getRow(size).get(4) %>" required="required"></td>
 	    <td><select name="miembro_sexo_<%= size+1 %>" size="1\" required="required">
 	    		<option value=""></option>
 	    		<option value="Masculino"<% if (db.getRow(size).get(7).equals("Masculino")) {%> selected <% } %>>Masculino</option>
@@ -57,6 +57,7 @@
 				<option value="Alemania"<% if (db.getRow(size).get(8).equals("Alemania")) {%> selected <% } %>>Alemania</option>
 				<option value="Andorra"<% if (db.getRow(size).get(8).equals("Andorra")) {%> selected <% } %>>Andorra</option>
 				<option value="Anguila"<% if (db.getRow(size).get(8).equals("Anguila")) {%> selected <% } %>>Anguila</option>
+				<option value="Angola"<% if (db.getRow(size).get(8).equals("Angola")) {%> selected <% } %>>Angola</option>
 				<option value="Antigua y Barbuda"<% if (db.getRow(size).get(8).equals("Antigua y Barbuda")) {%> selected <% } %>>Antigua y Barbuda</option>
 				<option value="Antillas Holandesas"<% if (db.getRow(size).get(8).equals("Antillas Holandesas")) {%> selected <% } %>>Antillas Holandesas</option>
 				<option value="Arabia Saudita"<% if (db.getRow(size).get(8).equals("Arabia Saudita")) {%> selected <% } %>>Arabia Saudita</option>
@@ -232,6 +233,7 @@
 				<option value="Alemania"<% if (db.getRow(size).get(6).equals("Alemania")) {%> selected <% } %>>Alemania</option>
 				<option value="Andorra"<% if (db.getRow(size).get(6).equals("Andorra")) {%> selected <% } %>>Andorra</option>
 				<option value="Anguila"<% if (db.getRow(size).get(6).equals("Anguila")) {%> selected <% } %>>Anguila</option>
+				<option value="Angola"<% if (db.getRow(size).get(6).equals("Angola")) {%> selected <% } %>>Angola</option>
 				<option value="Antigua y Barbuda"<% if (db.getRow(size).get(6).equals("Antigua y Barbuda")) {%> selected <% } %>>Antigua y Barbuda</option>
 				<option value="Antillas Holandesas"<% if (db.getRow(size).get(6).equals("Antillas Holandesas")) {%> selected <% } %>>Antillas Holandesas</option>
 				<option value="Arabia Saudita"<% if (db.getRow(size).get(6).equals("Arabia Saudita")) {%> selected <% } %>>Arabia Saudita</option>

@@ -125,6 +125,7 @@ public class Registro extends HttpServlet
 		URL img2 = null;
 		try {
 			img2 = new URL(req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/onpar/img/mingob.png");
+			// session.setAttribute("min_gob_watermark", req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/onpar/img/mingob_wm.jpg");
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -276,6 +277,10 @@ public class Registro extends HttpServlet
 			doc.add(new Phrase("Nacionalidad: "));
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_nacionalidad_lkup").toString(), fNormal));			
 			doc.add(Chunk.NEWLINE);		
+
+			doc.add(new Phrase("País de pasaporte y número de pasaporte: "));
+			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_pasaporte").toString(), fNormal));			
+			doc.add(Chunk.NEWLINE);	
 			
 			doc.add(new Phrase("Estatus Civil: "));
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_estatus_civil_lkup").toString(), fNormal));			
@@ -428,8 +433,8 @@ public class Registro extends HttpServlet
 					tab = new PdfPTable(6 /* columns */);
 					
 					tab.setWidthPercentage(100);
-			        tab.getDefaultCell().setUseAscender(true);
-			        tab.getDefaultCell().setUseDescender(true);
+			        // tab.getDefaultCell().setUseAscender(true);
+			        // tab.getDefaultCell().setUseDescender(true);
 				}
 				catch (Exception ex)
 				{
@@ -450,9 +455,7 @@ public class Registro extends HttpServlet
 					tab.addCell(new Phrase("Sexo",fNormalBlack));											
 					tab.addCell(new Phrase("Nacionalidad",fNormalBlack));											
 					tab.addCell(new Phrase("País",fNormalBlack));
-				
-				
-					tab.getDefaultCell().setNoWrap(true);
+					
 					rs.beforeFirst();
 					
 					

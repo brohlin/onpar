@@ -39,7 +39,7 @@
 </tr>
 <tr>  
 	<td align="right"><span class="smRedTxt">*</span> Fecha</td>   
-    <td><input name="fecha" value="" type="date" required="required"></td>          
+    <td><input name="fecha" value="" type="text" class="datepicker" required="required"></td>          
 </tr>
 <tr>  
 	<td align="right"><span class="smRedTxt">*</span> Descripción</td>   

@@ -14,8 +14,9 @@
 						"tel_nbr," +
 						"skype_handle," + 
 						"alternate," +
-						"last_mod_tmstmp) " +
-					"values (?,?,?,?,?,?,?,?,?,?,?,now())";
+						"last_mod_tmstmp," +
+						"notificador) " +
+					"values (?,?,?,?,?,?,?,?,?,?,?,now(),?)";
 						
 	String pUser_status_cd = request.getParameter("user_status_cd");
 	String pRole_id = request.getParameter("role_id");
@@ -28,6 +29,7 @@
 	String pTel_nbr = request.getParameter("tel_nbr");
 	String pSkype_handle = request.getParameter("skype_handle");
 	String pAlternate = request.getParameter("alternate");
+	String pNotificador = request.getParameter("notificador");
 	
 	
 	Connection con = null;
@@ -68,6 +70,7 @@
 			prest.setString(9,pTel_nbr);
 			prest.setString(10,pSkype_handle);
 			prest.setString(11,pAlternate);
+			prest.setString(12,pNotificador);
 			
 			int mCount = prest.executeUpdate();
 	
@@ -86,6 +89,7 @@
 			prest.setString(9,pTel_nbr);
 			prest.setString(10,pSkype_handle);
 			prest.setString(11,pAlternate);
+			prest.setString(12,pNotificador);
 			
 			int mCount = prest.executeUpdate();
 	

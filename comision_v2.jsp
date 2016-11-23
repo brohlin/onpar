@@ -20,7 +20,7 @@ if (session.getAttribute("role_id").equals("4")) {
 			<br>	
 			</td>
 		</tr>
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="date"  name="ref_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="text" class="datepicker"  name="ref_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión original del caso</td>
 			<td>
 				<select name="ref_dec_resol_lkup" size="1">
@@ -58,7 +58,7 @@ if (session.getAttribute("role_id").equals("4")) {
 		<br>
 		<br>	
 		
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="date"  name="ref_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="text" class="datepicker"  name="ref_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión de la reconsideración del caso: </td>
 			<td>
 				<select name="ref_dec_resol_recon_lkup" size="1">
@@ -95,7 +95,7 @@ if (session.getAttribute("role_id").equals("4")) {
 		<table border="0" cellspacing="0" cellpadding="4" width="600">
 		<br>
 		<br>
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la apelación: </td><td><input type="date"  name="ref_fecha_resol_apel"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la apelación: </td><td><input type="text" class="datepicker"  name="ref_fecha_resol_apel"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión de la apelación del caso: </td>
 			<td>
 				<select name="ref_dec_resol_apel_lkup" size="1">

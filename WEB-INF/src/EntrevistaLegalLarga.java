@@ -271,10 +271,6 @@ public class EntrevistaLegalLarga extends HttpServlet
 			doc.add(new Phrase("Nacionalidad: ")); 
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_nacionalidad_lkup").toString(), fNormal));
 			doc.add(Chunk.NEWLINE);
-			
-			doc.add(new Phrase("Edad: "));
-			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_edad").toString(), fNormal));
-			doc.add(Chunk.NEWLINE);
 				
 			doc.add(new Phrase("Fecha de nacimiento: "));
 			doc.add(new Chunk(session.getAttribute("temp_solicitante_v2_pre_fecha_de_nacimiento").toString(), fNormal));
@@ -463,6 +459,7 @@ public class EntrevistaLegalLarga extends HttpServlet
 			doc.add(new Paragraph(" "));
 			doc.add(new Paragraph(" "));
 			doc.add(new Paragraph("                                                                ", fUnderline));
+			doc.add(new Paragraph(session.getAttribute("temp_solicitante_v2_legal_username").toString(), fNormal));
 			doc.add(new Paragraph("Abogada, ONPAR"));
 
 		}

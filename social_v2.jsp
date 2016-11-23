@@ -25,19 +25,24 @@
 	<details>
 		<summary>Entrevista Social - <a href="/onpar/EntrevistaSocial_v2?time=<%= System.currentTimeMillis()%>" target="_blank">Imprimir la entrevista social para la firma</a><br><br>
 
-			Por favor, introduzca la fecha de la entrevista social para indicar que se tuvo lugar: <input type="date" id="fecha_entrevista_social" name="fecha_entrevista_social" value="<%= session.getAttribute("temp_solicitante_v2_fecha_entrevista_social") %>" required="required">
+			Por favor, introduzca la fecha de la entrevista social para indicar que se tuvo lugar: <input type="text" class="datepicker" id="fecha_entrevista_social" name="fecha_entrevista_social" value="<%= session.getAttribute("temp_solicitante_v2_fecha_entrevista_social") %>" required="required">
+			
+			<br>
+			Trabajador/a Social: <select name="social_user_id" size="1" required="required"><jsp:include page="/sql_get_users_social.jsp" /></select>
+			<br>
 			<input  type="submit" class="butnTxt" value="Guardar" name="save2">
 		</summary>
 		<br>
-		<br>
 		
+		<br>
 		<table border="0" cellspacing="2" cellpadding="4" width="600">
 			<tr><td align="left" valign="bottom" colspan="2" class="subHdrBlackTxt" nowrap><strong>A. DATOS GENERALES</strong></td></tr>
 			<tr><td colspan="2">Número de caso:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_id") %> </td></tr>	
 			<tr><td colspan="2">Nombre:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_primer_nombre") + " " + session.getAttribute("temp_solicitante_v2_pre_apellido_paterno") + " " + session.getAttribute("temp_solicitante_v2_pre_apellido_materno") %> </td></tr>
-			<tr><td colspan="2">Edad:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_edad") %> </td></tr>	
-			<tr><td colspan="2">Fecha de nacimiento:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_fecha_de_nacimiento") %> </td></tr>	
-			<tr><td colspan="2">Religión:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_religion_lkup") %> </td></tr>	
+			<tr><td colspan="2">GRUPO ÉTNICO O TRIBU</td><td colspan="2"><input type="text"  name="pre_etnico_o_tribu" value="<%= session.getAttribute("temp_solicitante_v2_pre_etnico_o_tribu") %>" size="20" maxlength="20"></td></tr>
+			<tr><td colspan="2">RELIGIÓN</td><td colspan="2"><select name="pre_religion_lkup"  size="1"><option value=""></option><jsp:include page="religion_lkup_v2.jsp" /></select></td></tr>
+			
+
 			<tr><td colspan="2">Nacionalidad:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_nacionalidad_lkup") %> </td></tr>		
 			<tr><td colspan="2">Identificación:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_pasaporte") %></td></tr>
 			<tr><td colspan="2">Otro documento de identidad:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_otros_documentos") %></td></tr>
@@ -46,8 +51,31 @@
 			<tr><td colspan="2">Dirección en Panamá:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_direccion_actual") %></td></tr>
 			<tr><td colspan="2" align="left">Fecha de llegada a Panamá:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_fecha_llegada_panama") %></td></tr>
 			<tr><td colspan="2">Fecha de llegada a ONPAR:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %></td></tr>	
-			<tr><td colspan="2">Fecha de llegada a ONPAR:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_fecha_solicitud_onpar") %></td></tr>	
-			<tr><td colspan="2">Ocupación en su país de origen:</td><td colspan="2"><%= session.getAttribute("temp_solicitante_v2_pre_ocu_puesto") %></td></tr>		
+			
+
+
+
+	<tr><td colspan="5" align="left">OCUPACIÓN (más reciente en el país de origen)</td></tr>
+	<tr class="datatablerowv2">
+		<td>Nombre del empleador</td>
+	    <td>Ciudad/País</td>
+		<td>Desde</td>
+	    <td>Hasta</td>
+	    <td>Nombre del puesto</td>
+	</tr>
+	<tr class="datatablerowaltv2">
+		<td><input type="text"  name="pre_ocu_empleador" value="<%= session.getAttribute("temp_solicitante_v2_pre_ocu_empleador") %>" size="25" maxlength="40"></td>
+	    <td><input type="text"  name="pre_ocu_lugar" value="<%= session.getAttribute("temp_solicitante_v2_pre_ocu_lugar") %>" size="25" maxlength="40"></td>
+	    <td><input type="text" class="datepicker"  name="pre_ocu_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_ocu_desde") %>"></td>
+	    <td><input type="text" class="datepicker"  name="pre_ocu_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_ocu_hasta") %>"></td>
+	    <td><input type="text"  name="pre_ocu_puesto" value="<%= session.getAttribute("temp_solicitante_v2_pre_ocu_puesto") %>" size="25" maxlength="40"></td>	    
+	</tr>
+
+
+
+
+			<br>
+			<br>
 			<tr><td colspan="4">NIVEL DE ESTUDIO: </td></tr>
 
 	<tr class="datatablerowv2">
@@ -60,15 +88,15 @@
 	<tr class="datatablerowaltv2">
 		<td><input type="text"  name="pre_edu_nombre" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_edu_lugar" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar") %>" size="25" maxlength="40"></td>
-	    <td><input type="date"  name="pre_edu_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde") %>"></td>
-	    <td><input type="date"  name="pre_edu_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta") %>"></td>
+	    <td><input type="text" class="datepicker2"  name="pre_edu_desde" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde") %>"></td>
+	    <td><input type="text" class="datepicker2"  name="pre_edu_hasta" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta") %>"></td>
 	    <td><input type="text"  name="pre_edu_titulo" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo") %>" size="25" maxlength="40"></td>	    
 	</tr>
 	<tr class="datatablerowaltv2">
 		<td><input type="text"  name="pre_edu_nombre2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_nombre2") %>" size="25" maxlength="40"></td>
 	    <td><input type="text"  name="pre_edu_lugar2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_lugar2") %>" size="25" maxlength="40"></td>
-	    <td><input type="date"  name="pre_edu_desde2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde2") %>"></td>
-	    <td><input type="date"  name="pre_edu_hasta2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta2") %>"></td>
+	    <td><input type="text" class="datepicker2"  name="pre_edu_desde2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_desde2") %>"></td>
+	    <td><input type="text" class="datepicker2"  name="pre_edu_hasta2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_hasta2") %>"></td>
 	    <td><input type="text"  name="pre_edu_titulo2" value="<%= session.getAttribute("temp_solicitante_v2_pre_edu_titulo2") %>" size="25" maxlength="40"></td>	    
 	</tr>			
 
@@ -81,94 +109,11 @@
 			
 			<!-- END OF PAGE 1 -->
 			<tr><td align="left" valign="bottom" colspan="2" class="subHdrBlackTxt" nowrap><strong>B. NUCLEO FAMILIAR BASICO</strong></td></tr>
-			<tr><td align="left" valign="bottom" colspan="2" class="subHdrBlackTxt" nowrap><strong>GRUPO FAMILIAR EN SU PAIS DE ORIGEN</strong></td></tr>
-
-			<tr>
-				<td colspan="4">
-					<table border="0">
-						<tr class="<%= altrow %>">
-							<th><strong>Nombre</strong></td>
-							<th><strong>Parentesco</strong></td>
-							<th><strong>Fecha de nacimiento</strong></th>
-							<th><strong>Sexo</strong></th>
-							<th><strong>Nacionalidad</strong></th>
-			    			<th><strong>Ocupación</strong></td>
-			    			<th><strong>País</strong></td>
-						</tr>
-<%		
-	while(size<db.getRowCount())
-	{			
-		if (altrow.equals("datatablerowaltv2")) {
-			altrow="datatablerowv2";
-		} else {
-			altrow="datatablerowaltv2";
-		}
-
-%>
-						<tr class="<%= altrow %>">
-							<td><%= db.getRow(size).get(3) %></td>
-							<td><%= db.getRow(size).get(2) %></td>
-							<td><%= db.getRow(size).get(4) %></td>
-							<td><%= db.getRow(size).get(7) %></td>
-							<td><%= db.getRow(size).get(8) %></td>
-				    		<td><%= db.getRow(size).get(5) %></td>
-				    		<td><%= db.getRow(size).get(6) %></td>
-						</tr>
-<%
-
-		size++;
-	}
-%>	
-					</table>
-				</td>
-			</tr>
-			<br>
-			<br>
-			<tr><td align="left" valign="bottom" colspan="2" class="subHdrBlackTxt" nowrap><strong>FAMILIARES QUE LE ACOMPAÑAN EN PANAMÁ</strong></td></tr>
 			
-			<tr>
-				<td colspan="4">
-					<table border="0">
-						<tr class="<%= altrow %>">
-							<th><strong>Nombre</strong></td>
-							<th><strong>Parentesco</strong></td>
-							<th><strong>Fecha de nacimiento</strong></th>
-							<th><strong>Sexo</strong></th>
-							<th><strong>Nacionalidad</strong></th>
-			    			<th><strong>Ocupación</strong></td>
-			    			<th><strong>País</strong></td>
-						</tr>
-<%		
-	size=0;
-	altrow="datatablerowaltv2";
-	
-	while(size<db2.getRowCount())
-	{			
-		if (altrow.equals("datatablerowaltv2")) {
-			altrow="datatablerowv2";
-		} else {
-			altrow="datatablerowaltv2";
-		}
-
-%>
-						<tr class="<%= altrow %>">
-							<td><%= db2.getRow(size).get(3) %></td>
-							<td><%= db2.getRow(size).get(2) %></td>
-							<td><%= db2.getRow(size).get(4) %></td>
-							<td><%= db2.getRow(size).get(7) %></td>
-							<td><%= db2.getRow(size).get(8) %></td>
-				    		<td><%= db2.getRow(size).get(5) %></td>
-				    		<td><%= db2.getRow(size).get(6) %></td>
-						</tr>
-<%
-
-		size++;
-	}
-%>	
-					</table>
-				</td>
-			</tr>			
-			
+			<tr><td colspan="5">			
+				<jsp:include page="social_familia.jsp" flush="true" />
+			</td></tr>
+<br>
 			
 			<tr><td align="left" valign="bottom" colspan="2" class="subHdrBlackTxt" nowrap><strong>C. SITUACIÓN ECONOMICA</strong></td></tr>
 			<tr><td colspan="2">INGRESO QUE PERCIBE EN PANAMA:</td><td colspan="2"><input type="text" name="ingreso_en_pa" value="<%= session.getAttribute("temp_solicitante_v2_ingreso_en_pa") %>" size="40" maxlength="40"></td></tr>		

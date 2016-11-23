@@ -19,7 +19,7 @@
 			<br>	
 			</td>
 		</tr>
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="date" tabindex="<%= mCounter++ %>" name="ref_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la decisión original: </td><td><input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="ref_fecha_resol"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Decisión original del caso</td>
 			<td>
 				<select name="ref_dec_resol_lkup" size="1">
@@ -57,7 +57,7 @@
 		<br>
 		<br>	
 		
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="date" tabindex="<%= mCounter++ %>" name="ref_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la reconsideración: </td><td><input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="ref_fecha_resol_recon"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Resolución de la reconsideración del caso: </td>
 			<td>
 				<select name="ref_dec_resol_recon_lkup" size="1">
@@ -94,7 +94,7 @@
 		<table border="0" cellspacing="0" cellpadding="4" width="600">
 		<br>
 		<br>
-		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la apelación: </td><td><input type="date" tabindex="<%= mCounter++ %>" name="ref_fecha_resol_apel"  value="" required="required" autofocus="autofocus"></td></tr>
+		<tr><td align="right"><span class="smRedTxt">*</span> Fecha de la apelación: </td><td><input type="text" class="datepicker" tabindex="<%= mCounter++ %>" name="ref_fecha_resol_apel"  value="" required="required" autofocus="autofocus"></td></tr>
 		<tr><td align="right"><span class="smRedTxt">*</span> Resolución de la apelación del caso: </td>
 			<td>
 				<select name="ref_dec_resol_apel_lkup" size="1">

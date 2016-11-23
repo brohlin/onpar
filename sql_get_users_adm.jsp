@@ -2,7 +2,7 @@
 <%@ page import="javax.sql.*" %>
 
 <%
-	String mQuery = "select format(u.id, '0'), us.nm, r.nm, u.email, u.first_nm, u.last_nm, ifnull(u.tel_nbr,'') from user u, user_status us, role r where u.user_status_cd=us.cd and u.role_id=r.id order by last_nm, first_nm";
+	String mQuery = "select format(u.id, '0'), us.nm, r.nm, u.email, u.first_nm, u.last_nm, ifnull(u.tel_nbr,''),ifnull(u.notificador,'No') from user u, user_status us, role r where u.user_status_cd=us.cd and u.role_id=r.id order by last_nm, first_nm";
 	
 	String mId = "";
 	String mUser_status_nm = "";
@@ -11,6 +11,7 @@
 	String mFirst_nm = "";
 	String mLast_nm = "";
 	String mTel_nbr = "";
+	String mNotificador = "";
 	
 	Connection con = null;
 	PreparedStatement prest = null;
@@ -60,6 +61,9 @@
 				Rol
 				</td>
 				<td nowrap class="grayCell">
+				Notificador
+				</td>
+				<td nowrap class="grayCell">
 				Estado
 				</td>
 			</tr>			
@@ -74,6 +78,7 @@
 				mFirst_nm = rs.getString(5);
 				mLast_nm = rs.getString(6);
 				mTel_nbr = rs.getString(7);
+				mNotificador = rs.getString(8);
 %>
 
 				<tr>
@@ -88,6 +93,9 @@
 					</td>
 					<td nowrap>
 					<%= mRole_nm %>
+					</td>
+					<td nowrap>
+					<%= mNotificador %>
 					</td>
 					<td nowrap>
 					<%= mUser_status_nm %>

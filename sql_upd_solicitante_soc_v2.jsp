@@ -5,7 +5,76 @@
 <%@ page import="org.onpar.log.*" %>
 <%@ page import="javax.sql.*" %>
 
+<%@ page import="org.onpar.database.*" %>
+<%@ page import="org.onpar.utils.*" %>
+<%@ page import="org.onpar.utils.arrays.*" %>
+<%@ page import="org.onpar.log.*" %>
+<%@ page import="javax.sql.*" %>
+
 <%
+	int rec2 = 0;
+	DynStringArray params_history2 = new DynStringArray();
+	params_history2.add(session.getAttribute("temp_solicitante_v2_id").toString());
+	params_history2.add("Actualizó entrevista social de solicitante.");
+	params_history2.add(session.getAttribute("id").toString());
+	params_history2.add(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString());	
+	rec2 = Database.callProc("p_ins_history", params_history2);
+	
+%>
+
+<%
+
+	int _num_fam_members = Integer.parseInt(request.getParameter("num_fam_members_social"));
+	int recs = 0;
+	DynStringArray params = new DynStringArray();
+	
+	String _miembro_relacion_ = "";
+	String _miembro_nombre_ = "";
+	String _miembro_fecha_de_nacimiento_ = "";
+	String _miembro_sexo_ = "";
+	String _miembro_nacionalidad_ = "";
+	String _miembro_ocupacion_ = "";
+	String _miembre_lugar_ = "";
+	String _numero_de_caso = session.getAttribute("temp_solicitante_v2_id").toString();
+	
+	
+	
+	for (int j=1; j<(_num_fam_members+1); j++) {
+		params.clear();
+		params.add(_numero_de_caso);
+		
+		if (j==1) {
+			recs = Database.callProc("p_del_familia",params);
+		}
+		
+		_miembro_relacion_ = request.getParameter("miembro_" + Integer.toString(j));
+		_miembro_nombre_ = request.getParameter("miembro_nombre_" + Integer.toString(j)); 	
+		_miembro_fecha_de_nacimiento_ =  request.getParameter("miembro_fecha_de_nacimiento_" + Integer.toString(j)); 
+		
+		_miembro_sexo_ =  request.getParameter("miembro_sexo_" + Integer.toString(j));
+		_miembro_nacionalidad_ =  request.getParameter("miembro_nacionalidad_" + Integer.toString(j));
+		
+		_miembro_ocupacion_ = request.getParameter("miembro_ocupacion_" + Integer.toString(j));
+		_miembre_lugar_ = request.getParameter("miembro_lugar_" + Integer.toString(j));
+	
+		params.add( _miembro_nombre_ );
+		params.add( _miembro_fecha_de_nacimiento_ );
+		params.add( _miembro_relacion_ );
+		params.add( _miembre_lugar_ );
+		params.add(session.getAttribute("id").toString());
+		params.add( _miembro_ocupacion_ );
+		params.add( _miembro_sexo_ );
+		params.add( _miembro_nacionalidad_ );
+		
+		System.out.println(_miembro_nombre_);
+		
+		if ( _miembro_nombre_ != null ) {
+			recs = Database.callProc("p_ins_familia",params);
+		}
+	
+	}
+
+
 
 	DynStringArray parameters = new DynStringArray();
 	int i = 0;
@@ -56,7 +125,14 @@
 					" pre_edu_hasta2 = ? , " +
 					" pre_edu_titulo2 = ? , " +
 					" last_mod_tmstmp = now(), " +
-					" last_user_id = ? " +
+					" last_user_id = ?, " +
+					" pre_etnico_o_tribu = ?, " +
+					" pre_religion_lkup = ?, " +
+					" pre_ocu_empleador = ?, " +
+					" pre_ocu_lugar = ?, " +
+					" pre_ocu_desde = ?, " +
+					" pre_ocu_hasta = ?, " +
+					" pre_ocu_puesto = ? " +
 					" where id = ? ";
 	
 	
@@ -89,7 +165,7 @@
 
 			prest=con.prepareStatement(mQuery);
 			prest.setString(1,request.getParameter("profesion"));
-			prest.setString(2,session.getAttribute("id").toString());
+			prest.setString(2,request.getParameter("social_user_id"));
 			prest.setString(3,request.getParameter("fecha_entrevista_social"));
 			prest.setString(4,request.getParameter("habilidades"));
 			prest.setString(5,request.getParameter("subsistiendo_en_pa"));
@@ -132,7 +208,14 @@
 			prest2.setString(9,request.getParameter("pre_edu_hasta2"));
 			prest2.setString(10,request.getParameter("pre_edu_titulo2"));
 			prest2.setString(11,session.getAttribute("id").toString());
-			prest2.setString(12,request.getParameter("id").toString());
+			prest2.setString(12,request.getParameter("pre_etnico_o_tribu"));
+			prest2.setString(13,request.getParameter("pre_religion_lkup"));
+			prest2.setString(14,request.getParameter("pre_ocu_empleador"));
+			prest2.setString(15,request.getParameter("pre_ocu_lugar"));
+			prest2.setString(16,request.getParameter("pre_ocu_desde"));
+			prest2.setString(17,request.getParameter("pre_ocu_hasta"));
+			prest2.setString(18,request.getParameter("pre_ocu_puesto"));
+			prest2.setString(19,request.getParameter("id").toString());
 			
 			int mCount2 = prest2.executeUpdate();
 			

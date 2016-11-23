@@ -24,7 +24,14 @@
 		
 	} catch (SQLException s) {
 	    System.out.println(s.getMessage());
-	}	
+	}
+	
+	DynStringArray params_hist = new DynStringArray();
+	params_hist.add(session.getAttribute("temp_solicitante_v2_id").toString());
+	DbResults history = Database.callProcResults("p_get_solicitante_history", params_hist);
+	
+	int size = 0;
+	String altrow = "datatablerowaltv2";
 %>
 	
 <fieldset>
@@ -147,6 +154,21 @@
 	<br>
 	<br>	
 	<jsp:include page="legal_v2.jsp" flush="true" />
+	
+	<br>
+	<br>
+	<fieldset>
+	<jsp:include page="entrevistas_legal_familia.jsp" flush="true" />
+	</fieldset>
+	
+	<br>
+	<br>
+	<fieldset>
+	<jsp:include page="ampliaciones_v2.jsp" flush="true" />
+	</fieldset>
+	<br>
+	<br>
+
 <%
 		}  else {
 %>
@@ -156,6 +178,9 @@
 				<summary>Entrevista Legal - No se puede hacer cambios a la Entrevista Legal después de subir el PDF.</summary>
 			</details>
 			</fieldset>
+
+			
+			
 <%
 		}
 	}
@@ -167,6 +192,12 @@
 	<br>
 
 	<jsp:include page="social_v2.jsp" flush="true" />
+	
+	<br>
+	<br>
+	<fieldset>
+	<jsp:include page="entrevistas_social_familia.jsp" flush="true" />
+	</fieldset>
 
 <%
 		} else {
@@ -209,7 +240,7 @@
 </fieldset>
 
 <%
-	if (session.getAttribute("role_id").equals("4")) {
+	if (session.getAttribute("role_id").equals("4") || session.getAttribute("notificador").equals("Sí")) {
 %>
 <br>
 <br>
@@ -233,21 +264,21 @@
 		</td>
 		<td>
 			<select name="status_of_case" required="required">
-				<option "Solicitud incompleta">Solicitud incompleta</option>
-				<option "En proceso - original">En proceso - original</option>
-				<option "En proceso - reconsideración">En proceso - reconsideración</option>
-				<option "Admitido/a a trámite - original">Admitido/a a trámite - original</option>
-				<option "Admitido/a a trámite - reconsideración">Admitido/a a trámite - reconsideración</option>
-				<option "No admitido/a a trámite - original">No admitido/a a trámite - original</option>
-				<option "No admitido/a a trámite - reconsideración">No admitido/a a trámite - reconsideración</option>
-				<option "Renuncia de Solicitante">Renuncia de Solicitante</option>
-				<option "Cesación">Cesación</option>
-				<option "Expulsión">Expulsión</option>
-				<option "Fallecimiento">Fallecimiento</option>
-				<option "Naturalización">Naturalización</option>
-				<option "Reasentamiento">Reasentamiento</option>
-				<option "Repatriación">Repatriación</option>
-				<option "Revocación">Revocación</option>
+				<option "Solicitud incompleta" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Solicitud incompleta") ) { %> selected <% } %>>Solicitud incompleta</option>
+				<option "En proceso - original" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("En proceso - original") ) { %> selected <% } %>>En proceso - original</option>
+				<option "En proceso - reconsideración" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("En proceso - reconsideración") ) { %> selected <% } %>>En proceso - reconsideración</option>
+				<option "Admitido/a a trámite - original" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Admitido/a a trámite - original") ) { %> selected <% } %>>Admitido/a a trámite - original</option>
+				<option "Admitido/a a trámite - reconsideración" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Admitido/a a trámite - reconsideración") ) { %> selected <% } %>>Admitido/a a trámite - reconsideración</option>
+				<option "No admitido/a a trámite - original" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("SNo admitido/a a trámite - original") ) { %> selected <% } %>>No admitido/a a trámite - original</option>
+				<option "No admitido/a a trámite - reconsideración" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("No admitido/a a trámite - reconsideración") ) { %> selected <% } %>>No admitido/a a trámite - reconsideración</option>
+				<option "Renuncia de Solicitante" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Renuncia de Solicitante") ) { %> selected <% } %>>Renuncia de Solicitante</option>
+				<option "Cesación" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Cesación") ) { %> selected <% } %>>Cesación</option>
+				<option "Expulsión" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Expulsión") ) { %> selected <% } %>>Expulsión</option>
+				<option "Fallecimiento" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Fallecimiento") ) { %> selected <% } %>>Fallecimiento</option>
+				<option "Naturalización" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Naturalización") ) { %> selected <% } %>>Naturalización</option>
+				<option "Reasentamiento" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Reasentamiento") ) { %> selected <% } %>>Reasentamiento</option>
+				<option "Repatriación" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Repatriación") ) { %> selected <% } %>>Repatriación</option>
+				<option "Revocación" <% if(session.getAttribute("temp_solicitante_v2_adm_estatus_lkup").toString().equals("Revocación") ) { %> selected <% } %>>Revocación</option>
 			</select>
 		</td>
 
@@ -269,6 +300,40 @@
 </table>
 <br>
 <br>
+<strong>Historia del caso</strong>
+<table border="0">
+	<tr class="<%= altrow %>">
+		<th><strong>ID</strong></th>
+		<th><strong>Acción tomada</strong></th>
+		<th><strong>Usuario</strong></th>
+		<th><strong>Último estatus</strong></th>
+		<th><strong>Fecha</strong></th>
+	</tr>
+<%		
+	while(size<history.getRowCount())
+	{			
+		if (altrow.equals("datatablerowaltv2")) {
+			altrow="datatablerowv2";
+		} else {
+			altrow="datatablerowaltv2";
+		}
+
+%>
+	<tr class="<%= altrow %>">
+		<td><%= history.getRow(size).get(0) %></td>
+		<td><%= history.getRow(size).get(1) %></td>
+		<td><%= history.getRow(size).get(2) %></td>
+		<td><%= history.getRow(size).get(3) %></td>
+		<td><%= history.getRow(size).get(4) %></td>
+	</tr>
+<%
+		size++;
+	}
+%>	
+
+</table>
+
+
 </details>
 </fieldset>
 <br>

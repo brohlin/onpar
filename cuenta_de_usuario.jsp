@@ -94,6 +94,25 @@
 		%>
 	</td>
 </tr>
+
+
+
+<!--- Notificador --->
+<tr>
+	<td align="right">
+		<span class="smRedTxt">*</span><label for="Notificador"> <label for="Notificador"> Notificador</label>
+	</td>
+	<td>
+		<%	
+			if (session.getAttribute("notificador").equals("Sí")) {
+				out.println("Notificador");
+			} else if (session.getAttribute("notificador").equals("No")) {
+				out.println("No Notificador");
+			}
+		%>
+	</td>
+</tr>
+
 <!--- Telephone --->
 <tr>
 	<td align="right">
